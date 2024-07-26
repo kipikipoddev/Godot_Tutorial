@@ -8,12 +8,6 @@ public class Targeting_Model : ITargeting_Model
 {
     public IWeapon_Model Weapon_selected { get; private set; }
 
-    public IEntity_Model Get_Target(IWeapon_Model weapon)
-    {
-        return Instances.Get_All<IEntity_Model>()
-            .FirstOrDefault(e => weapon.Posible(e));
-    }
-
     public void Select_Target(Vector2I target)
     {
         var spaceship = Get_Model(target);

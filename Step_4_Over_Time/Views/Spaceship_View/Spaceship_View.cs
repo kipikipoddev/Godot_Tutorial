@@ -20,15 +20,15 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
     private Label armor_label;
     private VBoxContainer effects_vbox;
     private Weapons_View weapons_view;
-    private ITargeting_Model Targeting;
-    private IGrid_Model Grid;
+    private ITargeting_Model targeting;
+    private IGrid_Model grid;
     
-    private bool is_hovering => Grid.Hovering == Model.Position.Value;
+    private bool is_hovering => grid.Hovering == Model.Position.Value;
 
     public Spaceship_View()
     {
-        Targeting = Instances.Get<ITargeting_Model>();
-        Grid = Instances.Get<IGrid_Model>();
+        targeting = Instances.Get<ITargeting_Model>();
+        grid = Instances.Get<IGrid_Model>();
     }
 
     public override void _Ready()
@@ -49,7 +49,7 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
 
     protected override void Update()
     {
-        Position = Grid.Converter(Model.Position);
+        Position = grid.Converter(Model.Position);
         shield_label.Text = Model.Shield.ToString();
 
         Update_Visible();
@@ -59,7 +59,7 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
 
     private void Update_Visible()
     {
-        weapons_view.Visible = is_hovering & !Targeting.Is_Weapon_selected & Model.Is_Alive;
+        weapons_view.Visible = is_hovering & !targeting.Is_Weapon_selected & Model.Is_Alive;
         name_label.Visible = is_hovering;
         hp_Bar.Show_Details = is_hovering;
         armor_label.Visible = Model.Armor.Amount > 0 & is_hovering;

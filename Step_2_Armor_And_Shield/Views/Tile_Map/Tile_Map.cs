@@ -11,7 +11,6 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
     private ITargeting_Model targeting;
 
     private Vector2I selected_cord = new Vector2I(2, 0);
-    private Vector2I? origin;
     private Vector2I highlighted;
     private Vector2I[] highlighted_positions;
 
@@ -37,17 +36,8 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
         if (highlighted != pos)
             Set_highlighted(pos);
         if (e.IsActionPressed("click") & !grid.Entered)
-        {
             if (targeting.Is_Weapon_selected)
                 Select_Target(pos);
-            else
-            {
-                grid.Clear_Hover();
-                origin = pos;
-            }
-        }
-        else if (origin != null && e.IsActionReleased("click"))
-            Clicked(pos);
     }
 
     public void Handle(Highlight_Event evnt)
@@ -66,19 +56,10 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
         highlighted_positions = null;
     }
 
-    private void Clicked(Vector2I pos)
-    {
-        grid.Select(origin.Value, pos);
-        Clear_selected(origin.Value);
-        origin = null;
-    }
-
     private void Set_highlighted(Vector2I pos)
     {
-        if (highlighted != origin)
-            Clear_selected(highlighted);
-        if (origin == null)
-            grid.Hover(pos);
+        Clear_selected(highlighted);
+        grid.Hover(pos);
         highlighted = pos;
         tile_map.SetCell(1, pos, 0, selected_cord);
     }
