@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=8 format=3 uid="uid://h8o7b057uvxc"]
+
+[ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_ovpp1"]
+[ext_resource type="Resource" uid="uid://dopf0d4cemb1a" path="res://Files/Weapons/Dot.tres" id="1_uyln8"]
+[ext_resource type="Resource" uid="uid://buqnvntwea6xp" path="res://Files/Weapons/Attack.tres" id="3_w1qhc"]
+
+[resource]
+script = ExtResource("1_ovpp1")
+Armor = 1
+Weapons = Array[Object]([ExtResource("1_uyln8"), ExtResource("3_w1qhc")])
+Hp = 7
+Name = ""

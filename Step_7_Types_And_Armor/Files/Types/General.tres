@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Type_Resource" load_steps=2 format=3 uid="uid://c8fw7ioha8blx"]
+
+[ext_resource type="Script" path="res://Resources/General/Type_Resource.cs" id="2_2rg1f"]
+
+[resource]
+script = ExtResource("2_2rg1f")
+Color = Color(1, 1, 1, 1)

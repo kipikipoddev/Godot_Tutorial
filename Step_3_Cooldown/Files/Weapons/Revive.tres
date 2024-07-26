@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://cl7jy2n1541m3"]
+
+[ext_resource type="Script" path="res://Resources/Actions/Revive_Resource.cs" id="1_7aqts"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="2_fsbkv"]
+
+[sub_resource type="Resource" id="Resource_thk3l"]
+script = ExtResource("1_7aqts")
+To_Hp = 2
+
+[resource]
+script = ExtResource("2_fsbkv")
+Cooldown_Time = 5
+Actions = Array[Object]([SubResource("Resource_thk3l")])
+Name = ""

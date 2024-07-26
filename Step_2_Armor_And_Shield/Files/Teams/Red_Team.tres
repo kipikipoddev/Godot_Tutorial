@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Team_Resource" load_steps=2 format=3 uid="uid://b1wrf4ovs6vg"]
+
+[ext_resource type="Script" path="res://Resources/Entity/Team_Resource.cs" id="1_padpg"]
+
+[resource]
+script = ExtResource("1_padpg")
+Color = Color(0.886275, 0, 0, 1)

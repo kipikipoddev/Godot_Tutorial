@@ -1,0 +1,10 @@
+
+namespace Hex_Space_Rpg.Interfaces;
+
+public interface IWeapon_Model : IName_Model
+{
+    IAction_Model[] Actions { get; }
+
+    bool Is_Available();
+    bool Posible(IEntity_Model target);
+}

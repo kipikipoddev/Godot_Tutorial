@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=8 format=3 uid="uid://hr7g0nbemau5"]
+
+[ext_resource type="Resource" uid="uid://c5towtdhlaa43" path="res://Files/Weapons/Quick_Heal.tres" id="1_3itko"]
+[ext_resource type="Resource" uid="uid://deimop7xhhd5a" path="res://Files/Weapons/Shield.tres" id="2_kq3nl"]
+[ext_resource type="Resource" uid="uid://cl7jy2n1541m3" path="res://Files/Weapons/Revive.tres" id="3_a1gr1"]
+[ext_resource type="Resource" uid="uid://cp0id1tbpvh5y" path="res://Files/Types/Magical.tres" id="3_htjm0"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Armor_Resource.cs" id="4_frdel"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="5_u5bwn"]
+
+[sub_resource type="Resource" id="Resource_10tcc"]
+script = ExtResource("4_frdel")
+Amount = 2
+Type = ExtResource("3_htjm0")
+
+[resource]
+script = ExtResource("5_u5bwn")
+Armor = Array[Object]([SubResource("Resource_10tcc")])
+Abilities = Array[Object]([ExtResource("1_3itko"), ExtResource("2_kq3nl"), ExtResource("3_a1gr1")])
+Hp = 10
+Name = ""

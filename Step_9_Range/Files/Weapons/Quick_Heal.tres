@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://c5towtdhlaa43"]
+
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_gg8no"]
+[ext_resource type="Script" path="res://Resources/Actions/Heal_Resource.cs" id="1_rqvfi"]
+[ext_resource type="Resource" uid="uid://xph56vs5qf06" path="res://Files/Types/Natural.tres" id="2_4k65g"]
+
+[sub_resource type="Resource" id="Resource_l7j3c"]
+script = ExtResource("1_rqvfi")
+Amount = 3
+
+[resource]
+script = ExtResource("1_gg8no")
+Cooldown_Time = 5
+Fire_Time = 2
+Range = 2
+Type = ExtResource("2_4k65g")
+Actions = Array[Object]([SubResource("Resource_l7j3c")])
+Name = ""
