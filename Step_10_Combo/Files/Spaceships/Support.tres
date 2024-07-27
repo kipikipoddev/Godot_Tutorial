@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=3 format=3 uid="uid://c6fk6ceq4yhj1"]
+
+[ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_2p0mv"]
+[ext_resource type="Resource" uid="uid://cxg0bjkqobwj5" path="res://Files/Weapons/Shield.tres" id="1_t3wn3"]
+
+[resource]
+script = ExtResource("1_2p0mv")
+Armor = null
+Weapons = Array[Object]([ExtResource("1_t3wn3")])
+Max_Shield = 3
+Movment_Cooldown = 5
+Hp = 7
+Name = ""
