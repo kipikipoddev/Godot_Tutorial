@@ -3,7 +3,7 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Views;
 
-public partial class Base_View<T> : Node2D, IListener<Update_Event>
+public partial class Base_View<T> : Node2D, IListener<UI_Update_Event>
 {
     private T model { get; set; }
     public T Model
@@ -21,7 +21,7 @@ public partial class Base_View<T> : Node2D, IListener<Update_Event>
         }
     }
 
-    public void Handle(Update_Event message)
+    public void Handle(UI_Update_Event message)
     {
         if (model != null)
             Update();

@@ -14,7 +14,7 @@ public class Stun_Model : Effect_Model
 
     protected override void Done()
     {
-        Remove();
+        base.Done();
         foreach (var weapon in weapons)
             if (weapon.Is_Firing)
                 new Timer_Command(weapon.Firing, Timer_Action.Stop);

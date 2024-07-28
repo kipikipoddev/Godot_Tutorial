@@ -1,6 +1,5 @@
 using Godot;
 using Hex_Space_Rpg.Events;
-using Hex_Space_Rpg.Models;
 
 namespace Hex_Space_Rpg.Views;
 

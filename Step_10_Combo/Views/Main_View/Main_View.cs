@@ -5,7 +5,7 @@ public partial class Main_View : Node2D
 {
     public override void _Ready()
     {
-        new Update_Event();
+        new UI_Update_Event();
     }
 
     public override void _Process(double delta)

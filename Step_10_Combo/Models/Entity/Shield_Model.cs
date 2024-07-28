@@ -7,7 +7,7 @@ public class Shield_Model :
     IHandler<Damage_Command>,
     IHandler<Add_Shield_Command>
 {
-    public Shield_Model(ISpaceship_Model owner, int max_shield)
+    public Shield_Model(IEntity_Model owner, int max_shield)
         : base(max_shield)
     {
         Mediator.Add_Handler<Damage_Command>(this, owner);

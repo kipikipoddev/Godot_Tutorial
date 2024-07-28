@@ -1,5 +1,3 @@
-using Godot;
-
 namespace Hex_Space_Rpg.Views;
 
 public partial class Weapons_View : Base_View<IWeapon_Model[]>

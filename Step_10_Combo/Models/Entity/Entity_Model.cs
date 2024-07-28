@@ -1,14 +1,13 @@
 ﻿using Godot;
-using Hex_Space_Rpg.Commands;
 using Hex_Space_Rpg.Datas;
-using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Entity_Model : IEntity_Model, IListener<Update_Event>
+public class Entity_Model : IEntity_Model
 {
     public string Name { get; }
     public IRange_Model Hp { get; }
+    public IRange_Model Shield { get; }
     public List<IEffect_Model> Effects { get; }
     public ITeam_Model Team { get; }
     public IPosition_Model Position { get; }
@@ -17,17 +16,9 @@ public class Entity_Model : IEntity_Model, IListener<Update_Event>
     {
         Name = data.Name;
         Hp = new Hp_Model(data.Hp, this);
+        Shield = new Shield_Model(this, data.Max_Shield);
         Effects = new();
         Team = new Team_Model(team);
         Position = new Position_Model(start_position, data.Movment_Cooldown);
-
-        Mediator.Add_Listener(this);
-    }
-
-    public void Handle(Update_Event evnt)
-    {
-        if (Hp.Is_Min)
-            while (Effects.Any())
-                new Remove_Effect_Command(Effects[0]).Send();
     }
 }

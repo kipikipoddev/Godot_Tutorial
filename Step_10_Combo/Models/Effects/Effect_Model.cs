@@ -18,7 +18,7 @@ public abstract class Effect_Model : IEffect_Model, IListener<Update_Event>, IHa
         Name = name;
         Timer = new Timer_Model(time);
         Target = target;
-        Mediator.Add_Listener(this, true);
+        Mediator.Add_Listener(this);
         Mediator.Add_Handler(this);
         Add_To_Effects();
     }
@@ -27,6 +27,8 @@ public abstract class Effect_Model : IEffect_Model, IListener<Update_Event>, IHa
     {
         if (Timer.Done)
             Done();
+        if (!Target.Is_Alive)
+            Remove();
     }
 
     public void Handle(Remove_Effect_Command cmd)

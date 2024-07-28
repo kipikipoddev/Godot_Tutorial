@@ -5,14 +5,11 @@ public static class Mediator
     private static readonly List<Listener_Data> listeners = new();
     private static readonly List<Handler_Data> handlers = new();
 
-    public static void Add_Listener<TEvent>(IListener<TEvent> listener, bool insert_first = false)
+    public static void Add_Listener<TEvent>(IListener<TEvent> listener)
         where TEvent : Event
     {
         var data = new Listener_Data(typeof(TEvent), listener, e => listener.Handle((TEvent)e));
-        if (insert_first)
-            listeners.Insert(0, data);
-        else
-            listeners.Add(data);
+        listeners.Add(data);
     }
 
     public static void Add_Handler<TCommand>(IHandler<TCommand> handler, object model = null)

@@ -24,7 +24,7 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
     public void Clear_Hover()
     {
         Hovering = null;
-        new Update_Event();
+        new UI_Update_Event();
     }
 
     public void Hover(Vector2I pos)
@@ -32,7 +32,7 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
         if (!Entered)
         {
             Hovering = pos;
-            new Update_Event();
+            new UI_Update_Event();
         }
     }
 
@@ -49,7 +49,7 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
         else
         {
             Hovering = null;
-            new Update_Event();
+            new UI_Update_Event();
         }
     }
 

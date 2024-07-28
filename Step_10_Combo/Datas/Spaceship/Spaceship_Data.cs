@@ -5,7 +5,6 @@ namespace Hex_Space_Rpg.Datas;
 
 public class Spaceship_Data : Entity_Data
 {
-    public int Max_Shield;
     public Armor_Data[] Armor;
     public Weapon_Data[] Weapons;
 

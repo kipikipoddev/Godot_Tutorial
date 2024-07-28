@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccrkqp0do1icp"]
+
+[ext_resource type="Script" path="res://Views/Entity_View/Entity_View.cs" id="1_bf7wx"]
+[ext_resource type="PackedScene" uid="uid://b3jqt5ar05rk1" path="res://Views/Bar/Bar.tscn" id="2_bsli7"]
+[ext_resource type="Script" path="res://Resources/General/Ratio_Resource.cs" id="3_fae3h"]
+[ext_resource type="Texture2D" uid="uid://bj8kq1o4eeqcx" path="res://Assets/colorful-spaceship-collection-with-flat-design/Ship.png" id="4_57mea"]
+
+[sub_resource type="Resource" id="Resource_qrmhw"]
+script = ExtResource("3_fae3h")
+Color = Color(0.85098, 0, 0, 1)
+Ratio = 0.2
+
+[sub_resource type="Resource" id="Resource_wbq6q"]
+script = ExtResource("3_fae3h")
+Color = Color(0.764706, 0.764706, 0, 1)
+Ratio = 0.6
+
+[sub_resource type="Resource" id="Resource_kjcp2"]
+script = ExtResource("3_fae3h")
+Color = Color(0.215686, 0.443137, 1, 1)
+Ratio = 1.0
+
+[node name="Entity_View" type="Node2D"]
+script = ExtResource("1_bf7wx")
+Start_Position = null
+
+[node name="Name_Label" type="Label" parent="."]
+offset_left = -31.0
+offset_top = -96.0
+offset_right = 32.0
+offset_bottom = -73.0
+text = "XXX"
+horizontal_alignment = 1
+
+[node name="Hp_Bar" parent="." instance=ExtResource("2_bsli7")]
+position = Vector2(0, -47)
+scale = Vector2(0.6, 0.6)
+Ratios = Array[Object]([SubResource("Resource_qrmhw"), SubResource("Resource_wbq6q")])
+
+[node name="Shield_Bar" parent="." instance=ExtResource("2_bsli7")]
+position = Vector2(0, -63)
+scale = Vector2(0.6, 0.6)
+Ratios = Array[Object]([SubResource("Resource_kjcp2")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 10)
+scale = Vector2(0.204075, 0.159632)
+texture = ExtResource("4_57mea")
+
+[node name="Effects" type="VBoxContainer" parent="."]
+offset_left = 35.0
+offset_top = -30.0
+offset_right = 101.0
+offset_bottom = -7.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Movment_Label" type="Label" parent="."]
+offset_left = -49.0
+offset_top = 15.0
+offset_right = 51.0
+offset_bottom = 38.0
+text = "XX"
+horizontal_alignment = 1

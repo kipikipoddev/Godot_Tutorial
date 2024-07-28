@@ -1,33 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5qo813bi084j"]
+[gd_scene load_steps=4 format=3 uid="uid://b5qo813bi084j"]
 
 [ext_resource type="Script" path="res://Views/Spaceship_View/Spaceship_View.cs" id="1_4e7o4"]
-[ext_resource type="PackedScene" uid="uid://b3jqt5ar05rk1" path="res://Views/Hp_Bar/Hp_Bar.tscn" id="2_cfwvx"]
-[ext_resource type="Texture2D" uid="uid://bj8kq1o4eeqcx" path="res://Assets/colorful-spaceship-collection-with-flat-design/Ship.png" id="3_7bqan"]
+[ext_resource type="PackedScene" uid="uid://ccrkqp0do1icp" path="res://Views/Entity_View/Entity_View.tscn" id="2_6iw08"]
 [ext_resource type="PackedScene" uid="uid://ddorpvmtc8f51" path="res://Views/Weapons_View/Weapons_View.tscn" id="4_quc5j"]
 
 [node name="Spaceship_View" type="Node2D"]
 script = ExtResource("1_4e7o4")
 Start_Position = null
 
-[node name="Name_Label" type="Label" parent="."]
-offset_left = -32.0
-offset_top = -80.0
-offset_right = 31.0
-offset_bottom = -57.0
-text = "XXX"
-horizontal_alignment = 1
-
-[node name="Hp_Bar" parent="." instance=ExtResource("2_cfwvx")]
-position = Vector2(0, -47)
-scale = Vector2(0.6, 0.6)
-
-[node name="Shield_Label" type="Label" parent="."]
-offset_left = -49.0
-offset_top = -101.0
-offset_right = 51.0
-offset_bottom = -78.0
-text = "XX / XX"
-horizontal_alignment = 1
+[node name="Entity_View" parent="." instance=ExtResource("2_6iw08")]
+position = Vector2(0, 2)
 
 [node name="Armor" type="HBoxContainer" parent="."]
 offset_left = -78.0
@@ -38,26 +20,13 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 2
 alignment = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 10)
-scale = Vector2(0.204075, 0.159632)
-texture = ExtResource("3_7bqan")
-
-[node name="Effects" type="VBoxContainer" parent="."]
-offset_left = 35.0
-offset_top = -30.0
-offset_right = 101.0
-offset_bottom = -7.0
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="Movment_Label" type="Label" parent="."]
-offset_left = -49.0
-offset_top = 15.0
-offset_right = 51.0
-offset_bottom = 38.0
-text = "XX"
-horizontal_alignment = 1
-
 [node name="Weapons_View" parent="." instance=ExtResource("4_quc5j")]
 position = Vector2(3, 0)
+
+[node name="Dead_Label" type="Label" parent="."]
+offset_left = -31.0
+offset_top = -65.0
+offset_right = 32.0
+offset_bottom = -42.0
+text = "Dead"
+horizontal_alignment = 1
