@@ -9,12 +9,14 @@ public partial class Bar : Base_View<IRange_Model>
 
     public Func<bool> Show_Details;
 
+    private ColorRect border;
     private ColorRect bar;
     private Label values_label;
     private float width;
 
     public override void _Ready()
     {
+        border = GetNode<ColorRect>("Border");
         bar = GetNode<ColorRect>("Bar");
         values_label = GetNode<Label>("Values_Label");
         width = bar.Size.X;
@@ -22,7 +24,9 @@ public partial class Bar : Base_View<IRange_Model>
 
     protected override void Update()
     {
-        values_label.Visible = Show_Details();
+        var show_details = Show_Details();
+        border.Visible = show_details;
+        values_label.Visible = show_details;
         values_label.Text = $"{Model.Amount} / {Model.Max}";
 
         var ratio = Model.Ratio;

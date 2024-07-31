@@ -25,7 +25,8 @@ public class Weapon_Model : IWeapon_Model, IListener<Update_Event>, IHandler<Fir
         Cooldown = new Timer_Model(data.Cooldown_Time);
         Type = new Type_Model(data.Type);
         Range = data.Range;
-        Firing = new Timer_Model(data.Fire_Time);
+        Firing = new Timer_Model(data.Fire_Time, Fire);
+        new Weapon_Auto_Fire_Model(this);
 
         Mediator.Add_Handler(this);
         Mediator.Add_Listener(this);
@@ -47,12 +48,6 @@ public class Weapon_Model : IWeapon_Model, IListener<Update_Event>, IHandler<Fir
             new Timer_Command(Cooldown, Timer_Action.Stop).Send();
         else if (Firing.Running && !Posible(target, true))
             new Timer_Command(Firing, Timer_Action.Stop).Send();
-        else if (Firing.Done & target != null)
-        {
-            Action.Perform(target);
-            target = null;
-            new Timer_Command(Cooldown).Send();
-        }
     }
 
     public void Handle(Fire_Weapon_Command cmd)
@@ -62,6 +57,13 @@ public class Weapon_Model : IWeapon_Model, IListener<Update_Event>, IHandler<Fir
             new Timer_Command(Firing).Send();
             target = cmd.Target;
         }
+    }
+
+    private void Fire()
+    {
+        Action.Perform(target);
+        target = null;
+        new Timer_Command(Cooldown).Send();
     }
 
     private bool Posible(bool ignore_firing)

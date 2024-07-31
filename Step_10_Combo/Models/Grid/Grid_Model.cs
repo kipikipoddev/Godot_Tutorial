@@ -10,7 +10,7 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 
     public Func<IPosition_Model, Vector2> Converter { get; set; }
     public Func<Vector2I, bool> Is_Valid { get; set; }
-    public bool Entered { get; set; }
+    public bool Weapon_Entered { get; set; }
 
     public Grid_Model()
     {
@@ -31,7 +31,7 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 
     public void Hover(Vector2I pos)
     {
-        if (!Entered)
+        if (!Weapon_Entered)
         {
             if (hovering != null)
                 new Set_Hover_Command(hovering, false).Send();

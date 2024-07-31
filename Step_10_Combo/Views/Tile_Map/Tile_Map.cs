@@ -39,7 +39,7 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
 
         if (highlighted != pos)
             Set_highlighted(pos);
-        if (e.IsActionPressed("click") & !grid.Entered)
+        if (e.IsActionPressed("click") & !grid.Weapon_Entered)
         {
             if (targeting.Is_Weapon_selected)
                 Select_Target(pos);

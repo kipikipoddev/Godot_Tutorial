@@ -8,13 +8,16 @@ public class Timer_Model :
     IListener<Time_Event>,
     IHandler<Timer_Command>
 {
+    private readonly Action done_action;
+
     public double Current { get; private set; }
     public double Interval { get; protected set; }
     public State State { get; private set; }
 
-    public Timer_Model(int interval)
+    public Timer_Model(int interval, Action? done_action = null)
     {
         Interval = interval;
+        this.done_action = done_action;
         if (Interval > 0)
             Start();
         Mediator.Add_Handler(this);
@@ -72,6 +75,7 @@ public class Timer_Model :
     {
         State = State.Done;
         Mediator.Remove_Listener(this);
+        done_action?.Invoke();
         new Update_Event();
     }
 

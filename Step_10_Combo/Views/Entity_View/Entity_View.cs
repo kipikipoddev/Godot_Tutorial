@@ -51,7 +51,7 @@ public partial class Entity_View : Base_View<IEntity_Model>
 
     private void Update_Effects()
     {
-        effects_vbox.Visible = Model.Is_Alive;
+        effects_vbox.Visible = Model.Is_Alive & Model.Is_Hovering;
         if (effects_vbox.Visible)
             Add_Effects();
     }
