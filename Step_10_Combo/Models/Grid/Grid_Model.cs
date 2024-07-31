@@ -6,7 +6,8 @@ namespace Hex_Space_Rpg.Models;
 
 public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 {
-    public Vector2I? Hovering { get; private set; }
+    private IEntity_Model hovering;
+
     public Func<IPosition_Model, Vector2> Converter { get; set; }
     public Func<Vector2I, bool> Is_Valid { get; set; }
     public bool Entered { get; set; }
@@ -18,12 +19,13 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 
     public void Handle(Highlight_Event evnt)
     {
-        Hovering = null;
+        Clear_Hover();
     }
 
     public void Clear_Hover()
     {
-        Hovering = null;
+        if (hovering != null)
+            new Set_Hover_Command(hovering, false).Send();
         new UI_Update_Event();
     }
 
@@ -31,7 +33,10 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
     {
         if (!Entered)
         {
-            Hovering = pos;
+            if (hovering != null)
+                new Set_Hover_Command(hovering, false).Send();
+            hovering = Get_Model(pos);
+            new Set_Hover_Command(hovering, true).Send();
             new UI_Update_Event();
         }
     }
@@ -43,14 +48,11 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 
         if (origin_model != null && target_model == null)
         {
-            Hovering = target;
+            Hover(target);
             new Move_Command(origin_model.Position, target).Send();
         }
         else
-        {
-            Hovering = null;
-            new UI_Update_Event();
-        }
+            Clear_Hover();
     }
 
     private static ISpaceship_Model Get_Model(Vector2I position)

@@ -7,7 +7,7 @@ public interface IEntity_Model : IName_Model
     List<IEffect_Model> Effects { get; }
     ITeam_Model Team { get; }
     IPosition_Model Position { get; }
+    bool Is_Hovering { get; }
 
     bool Is_Alive => Hp.Not_Min;
-    bool Is_Hovering => Instances.Get<IGrid_Model>().Hovering == Position.Value & Is_Alive;
 }

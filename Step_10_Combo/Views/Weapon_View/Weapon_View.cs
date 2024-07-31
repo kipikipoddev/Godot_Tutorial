@@ -11,6 +11,7 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
     private Texture2D enable_icon;
     private Texture2D disable_icon;
     private ITargeting_Model targeting;
+    private IGrid_Model grid;
 
     public override void _Ready()
     {
@@ -19,6 +20,7 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
         enable_icon = button.Icon;
         disable_icon = ResourceLoader.Load<Texture2D>(Disable_Path);
         targeting = Instances.Get<ITargeting_Model>();
+        grid = Instances.Get<IGrid_Model>();
     }
 
     public override void _Process(double delta)
@@ -30,11 +32,11 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
 
     public void On_Mouse_Entered()
     {
-        Instances.Get<IGrid_Model>().Entered = true;
+        grid.Entered = true;
     }
     public void On_Mouse_Exited()
     {
-        Instances.Get<IGrid_Model>().Entered = false;
+        grid.Entered = false;
     }
 
     protected override void Update()

@@ -42,7 +42,7 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
     protected override void Update()
     {
         Position = grid.Converter(Model.Position);
-
+        ZIndex = Model.Is_Hovering ? 2 : 1;
         Update_Visible();
     }
 
