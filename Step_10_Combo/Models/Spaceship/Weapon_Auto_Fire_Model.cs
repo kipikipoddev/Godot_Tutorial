@@ -1,4 +1,5 @@
-﻿using Hex_Space_Rpg.Commands;
+﻿using Godot;
+using Hex_Space_Rpg.Commands;
 using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
@@ -25,10 +26,24 @@ public class Weapon_Auto_Fire_Model : IListener<Update_Event>
 
     private ISpaceship_Model Get_Target()
     {
-        var position = weapon.Owner.Position.Value;
         return Instances.Get_All<ISpaceship_Model>()
             .Where(s => weapon.Posible(s))
-            .OrderBy(s => s.Position.Get_Distance(position))
+            .OrderBy(Get_Order)
             .FirstOrDefault();
+    }
+
+    private int Get_Order(ISpaceship_Model target)
+    {
+        if (weapon.Action is Shield_Action_Model)
+            return Get_Order(target.Shield);
+        else if (weapon.Action is Heal_Action_Model)
+            return Get_Order(target.Hp);
+        else
+            return target.Position.Get_Distance(weapon.Owner.Position.Value);
+    }
+
+    private int Get_Order(IRange_Model range)
+    {
+        return range.Amount - range.Max;
     }
 }

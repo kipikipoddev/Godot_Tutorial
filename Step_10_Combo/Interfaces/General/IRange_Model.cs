@@ -9,4 +9,6 @@ public interface IRange_Model : IAmount_Model
 
     bool Is_Min => Amount == Min;
     bool Not_Min => Amount > Min;
+    bool Is_Max => Amount == Max;
+    bool Not_Max => Amount < Max;
 }

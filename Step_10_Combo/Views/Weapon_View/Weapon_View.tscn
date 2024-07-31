@@ -8,7 +8,6 @@
 [node name="WeaponView" type="Node2D"]
 script = ExtResource("1_48tun")
 Cooldown_Color = Color(0.866667, 0, 0, 1)
-Firing_Color = Color(0.713726, 0.384314, 0, 1)
 Ideal_Color = Color(0, 0.686275, 0, 1)
 
 [node name="Button" type="Button" parent="."]

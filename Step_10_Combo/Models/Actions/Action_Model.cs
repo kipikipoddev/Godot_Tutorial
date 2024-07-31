@@ -24,7 +24,7 @@ public abstract class Action_Model : IAction_Model
     {
     }
 
-    public bool Posible(IEntity_Model target)
+    public virtual bool Posible(IEntity_Model target)
     {
         var is_same_team = target.Team.Equals(Owner.Owner.Team);
         if (On_Friendly ^ is_same_team)

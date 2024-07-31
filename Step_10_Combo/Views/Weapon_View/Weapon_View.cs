@@ -13,15 +13,10 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
     private Label label;
     private Sprite2D border;
 
-    private ITargeting_Model targeting;
-    private IGrid_Model grid;
-
     public override void _Ready()
     {
         label = GetNode<Label>("Label");
         border = GetNode<Sprite2D>("Border");
-        targeting = Instances.Get<ITargeting_Model>();
-        grid = Instances.Get<IGrid_Model>();
     }
 
     public override void _Process(double delta)
@@ -30,15 +25,6 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
         if (Model.Cooldown.Running)
             name += " " + Model.Cooldown.Current.ToString("F1");
         label.Text = name.Replace(' ', '\n');
-    }
-
-    public void On_Mouse_Entered()
-    {
-        grid.Weapon_Entered = true;
-    }
-    public void On_Mouse_Exited()
-    {
-        grid.Weapon_Entered = false;
     }
 
     protected override void Update()
@@ -57,10 +43,5 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
             FontColor = Model?.Type?.Color ?? Colors.Black
         };
         Update();
-    }
-
-    public void On_Button_Pressed()
-    {
-        targeting.Select_Weapon(Model);
     }
 }

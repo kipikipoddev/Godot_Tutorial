@@ -18,7 +18,7 @@ Time_Between_Occurs = 3
 [resource]
 script = ExtResource("1_2488w")
 Cooldown_Time = 7
-Range = 3
+Range = 1
 Type = ExtResource("3_wvj33")
 Action = SubResource("Resource_2u5ju")
 Name = ""

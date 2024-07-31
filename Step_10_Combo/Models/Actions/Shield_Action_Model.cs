@@ -17,4 +17,9 @@ public class Shield_Action_Model : Action_Model
     {
         new Add_Shield_Command(target, amount).Send();
     }
+
+    public override bool Posible(IEntity_Model target)
+    {
+        return base.Posible(target) & target.Shield.Not_Max;
+    }
 }

@@ -17,12 +17,10 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
     private Label dead_label;
     private HBoxContainer armor_hb;
     private Weapons_View weapons_view;
-    private ITargeting_Model targeting;
     private IGrid_Model grid;
 
     public Spaceship_View()
     {
-        targeting = Instances.Get<ITargeting_Model>();
         grid = Instances.Get<IGrid_Model>();
     }
 
@@ -48,12 +46,10 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
 
     private void Update_Visible()
     {
-        var is_hovering = Model.Is_Hovering;
-        weapons_view.Visible = is_hovering & !targeting.Is_Weapon_selected; ;
-        armor_hb.Visible = Model.Armor.Length > 0 & is_hovering;
+        weapons_view.Visible = Model.Is_Hovering & Model.Is_Alive;
+        armor_hb.Visible = Model.Armor.Length > 0 & Model.Is_Hovering;
         dead_label.Visible = !Model.Is_Alive;
     }
-
 
     private void Set_Armor()
     {

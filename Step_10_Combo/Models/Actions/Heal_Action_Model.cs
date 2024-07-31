@@ -17,4 +17,9 @@ public class Heal_Action_Model : Action_Model
     {
         new Heal_Command(target, amount).Send();
     }
+
+    public override bool Posible(IEntity_Model target)
+    {
+        return base.Posible(target) & target.Hp.Not_Max;
+    }
 }
