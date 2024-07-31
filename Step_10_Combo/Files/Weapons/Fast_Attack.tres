@@ -10,8 +10,7 @@ Amount = 2
 
 [resource]
 script = ExtResource("1_ks7ix")
-Cooldown_Time = 1
-Fire_Time = 2
+Cooldown_Time = 3
 Range = 2
 Type = ExtResource("1_mkqrt")
 Action = SubResource("Resource_sj00r")

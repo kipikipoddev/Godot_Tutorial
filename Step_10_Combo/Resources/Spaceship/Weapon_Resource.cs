@@ -10,9 +10,6 @@ public partial class Weapon_Resource : Named_Resource
 	public int Cooldown_Time;
 
 	[Export(PropertyHint.Range, "1,10")]
-	public int Fire_Time;
-
-	[Export(PropertyHint.Range, "1,10")]
 	public int Range;
 
 	[Export]
@@ -27,7 +24,6 @@ public partial class Weapon_Resource : Named_Resource
 		{
 			Name = Name,
 			Cooldown_Time = Cooldown_Time,
-			Fire_Time = Fire_Time,
 			Type = Type.Map(),
 			Range = Range,
 			Action = Action.Map(this)

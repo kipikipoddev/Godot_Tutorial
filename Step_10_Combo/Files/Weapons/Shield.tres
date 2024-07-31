@@ -10,8 +10,7 @@ Amount = 3
 
 [resource]
 script = ExtResource("1_hpigs")
-Cooldown_Time = 3
-Fire_Time = 3
+Cooldown_Time = 4
 Range = 2
 Type = ExtResource("2_8wjqv")
 Action = SubResource("Resource_ee6rh")

@@ -24,8 +24,6 @@ public class Movment_Model : IHandler<Move_Command>
             return false;
         if (owner.Effects.OfType<Stun_Model>().Any())
             return false;
-        if (owner.Is_Firing)
-            return false;
         return owner.Position.Get_Distance(position) == 1;
     }
 }

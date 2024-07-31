@@ -3,7 +3,6 @@
 public abstract class Action_Model : IAction_Model
 {
     protected readonly IWeapon_Model Owner;
-    protected bool On_Alive { get; set; }
     protected bool On_Spaceships { get; set; }
 
     public bool On_Friendly { get; protected set; }
@@ -12,7 +11,6 @@ public abstract class Action_Model : IAction_Model
     {
         Owner = owner;
         On_Friendly = true;
-        On_Alive = true;
         On_Spaceships = true;
     }
 
@@ -30,9 +28,6 @@ public abstract class Action_Model : IAction_Model
     {
         var is_same_team = target.Team.Equals(Owner.Owner.Team);
         if (On_Friendly ^ is_same_team)
-            return false;
-
-        if (On_Alive ^ target.Is_Alive)
             return false;
 
         if (On_Spaceships && !(target is ISpaceship_Model))

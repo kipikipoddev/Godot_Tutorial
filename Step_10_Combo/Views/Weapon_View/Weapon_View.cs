@@ -8,9 +8,6 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
     public Color Cooldown_Color;
 
     [Export]
-    public Color Firing_Color;
-
-    [Export]
     public Color Ideal_Color;
 
     private Label label;
@@ -32,8 +29,6 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
         var name = Model.Name;
         if (Model.Cooldown.Running)
             name += " " + Model.Cooldown.Current.ToString("F1");
-        else if (Model.Is_Firing)
-            name += " " + Model.Firing.Current.ToString("F1");
         label.Text = name.Replace(' ', '\n');
     }
 
@@ -48,7 +43,7 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
 
     protected override void Update()
     {
-        border.Modulate = Model.Is_Cooldown ? Cooldown_Color : Model.Is_Firing ? Firing_Color : Ideal_Color;
+        border.Modulate = Model.Is_Cooldown ? Cooldown_Color : Ideal_Color;
     }
 
     protected override void On_Model_Changed()

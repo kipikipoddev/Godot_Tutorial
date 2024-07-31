@@ -11,7 +11,6 @@ Amount = 2
 [resource]
 script = ExtResource("1_g0qle")
 Cooldown_Time = 3
-Fire_Time = 2
 Range = 2
 Type = ExtResource("2_onnqb")
 Action = SubResource("Resource_yqo5c")
