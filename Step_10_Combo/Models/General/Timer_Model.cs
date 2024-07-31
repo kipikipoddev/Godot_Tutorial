@@ -1,12 +1,8 @@
-﻿using Hex_Space_Rpg.Commands;
-using Hex_Space_Rpg.Events;
+﻿using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Timer_Model :
-    ITimer_Model,
-    IListener<Time_Event>,
-    IHandler<Timer_Command>
+public class Timer_Model : ITimer_Model, IListener<Time_Event>
 {
     private readonly Action done_action;
 
@@ -20,7 +16,6 @@ public class Timer_Model :
         this.done_action = done_action;
         if (Interval > 0)
             Start();
-        Mediator.Add_Handler(this);
     }
 
     public void Handle(Time_Event evt)
@@ -29,46 +24,42 @@ public class Timer_Model :
         if (Current <= 0 && State == State.In_Progress)
             Done();
     }
-    public override string ToString()
+
+    public void Resume()
     {
-        return Current.ToString("F1");
+        if (State != State.Pause)
+            return;
+        State = State.In_Progress;
+        Mediator.Add_Listener(this);
     }
 
-    public void Handle(Timer_Command cmd)
+    public void Pause()
     {
-        switch (cmd.Action)
-        {
-            case Timer_Action.Start:
-                Start();
-                break;
-            case Timer_Action.Pause:
-                Pause();
-                break;
-            case Timer_Action.Stop:
-                Stop();
-                break;
-            case Timer_Action.Resume:
-                Resume();
-                break;
-        }
+        if (State != State.In_Progress)
+            return;
+        Mediator.Remove_Listener(this);
+        State = State.Pause;
     }
 
-    private void Resume()
-    {
-        if (State == State.Pause)
-        {
-            State = State.In_Progress;
-            Mediator.Add_Listener(this);
-        }
-    }
-
-    private void Pause()
+    public void Start()
     {
         if (State == State.In_Progress)
-        {
-            Mediator.Remove_Listener(this);
-            State = State.Pause;
-        }
+            return;
+        Current = Interval;
+        State = State.In_Progress;
+        Mediator.Add_Listener(this);
+    }
+
+    public void Stop()
+    {
+        State = State.Not_Started;
+        Mediator.Remove_Listener(this);
+    }
+
+    public void Reset()
+    {
+        Stop();
+        Start();
     }
 
     private void Done()
@@ -77,18 +68,5 @@ public class Timer_Model :
         Mediator.Remove_Listener(this);
         done_action?.Invoke();
         new Update_Event();
-    }
-
-    private void Start()
-    {
-        Current = Interval;
-        State = State.In_Progress;
-        Mediator.Add_Listener(this);
-    }
-
-    private void Stop()
-    {
-        State = State.Not_Started;
-        Mediator.Remove_Listener(this);
     }
 }

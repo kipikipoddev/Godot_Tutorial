@@ -39,7 +39,6 @@ public static class Mediator
         var handlers_action = handlers.Where(h => h.Command_Type == cmd.GetType() && h.Model == cmd.Model_Object)
             .Select(h => h.Handle).Reverse().ToArray();
         foreach (var handler in handlers_action)
-            if (cmd.Is_Valid)
                 handler(cmd);
     }
 }

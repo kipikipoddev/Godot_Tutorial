@@ -1,12 +1,11 @@
 ﻿using Hex_Space_Rpg.Commands;
-using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public abstract class Effect_Model : IEffect_Model, IListener<Update_Event>, IHandler<Remove_Effect_Command>
+public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Command>
 {
     protected readonly IEntity_Model Target;
-    protected readonly ITimer_Model Timer;
+    protected readonly Timer_Model Timer;
 
     public string Name { get; protected set; }
 
@@ -16,19 +15,10 @@ public abstract class Effect_Model : IEffect_Model, IListener<Update_Event>, IHa
     public Effect_Model(string name, int time, IEntity_Model target)
     {
         Name = name;
-        Timer = new Timer_Model(time);
+        Timer = new Timer_Model(time, Done);
         Target = target;
-        Mediator.Add_Listener(this);
         Mediator.Add_Handler(this);
         Add_To_Effects();
-    }
-
-    public virtual void Handle(Update_Event evnt)
-    {
-        if (Timer.Done)
-            Done();
-        if (!Target.Is_Alive)
-            Remove();
     }
 
     public void Handle(Remove_Effect_Command cmd)

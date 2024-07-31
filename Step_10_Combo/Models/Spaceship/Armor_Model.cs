@@ -25,9 +25,4 @@ public class Armor_Model : IArmor_Model, IHandler<Damage_Command>
 
         cmd.Amount = Math.Max(1, cmd.Amount);
     }
-
-    public override string ToString()
-    {
-        return $"{Amount:d2}";
-    }
 }

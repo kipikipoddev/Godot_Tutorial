@@ -29,15 +29,18 @@ public partial class Entity_View : Base_View<IEntity_Model>
         shield_bar.Show_Details = () => Model.Is_Hovering;
     }
 
-    public override void _Process(double delta)
-    {
-        movment_label.Text = Model.Position.Movment_Cooldown.ToString();
-    }
-
     protected override void Update()
     {
         Update_Visible();
         Update_Effects();
+        Update_Movment();
+    }
+
+    private void Update_Movment()
+    {
+        var movment_Charges = Model.Position.Movment_Charges;
+        movment_label.Text = $"{movment_Charges.Amount}/{movment_Charges.Max}";
+        movment_label.Visible = Model.Is_Alive;
     }
 
     private void Update_Visible()
@@ -46,7 +49,6 @@ public partial class Entity_View : Base_View<IEntity_Model>
         name_label.Visible = is_hovering;
         hp_Bar.Visible = Model.Is_Alive;
         shield_bar.Visible = Model.Is_Alive & Model.Shield.Not_Min;
-        movment_label.Visible = Model.Position.Movment_Cooldown.Running;
     }
 
     private void Update_Effects()

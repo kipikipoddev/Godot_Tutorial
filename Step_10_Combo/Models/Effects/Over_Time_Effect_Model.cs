@@ -1,5 +1,4 @@
-﻿using Hex_Space_Rpg.Commands;
-using Hex_Space_Rpg.Events;
+﻿using Hex_Space_Rpg.Events;
 namespace Hex_Space_Rpg.Models;
 
 public class Over_Time_Effect_Model : Effect_Model
@@ -22,7 +21,7 @@ public class Over_Time_Effect_Model : Effect_Model
         if (--left == 0)
             Remove();
         else
-            new Timer_Command(Timer).Send();
+            Timer.Start();
         new Update_Event();
     }
 }

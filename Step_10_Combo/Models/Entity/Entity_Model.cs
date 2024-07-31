@@ -18,10 +18,10 @@ public class Entity_Model : IEntity_Model, IHandler<Set_Hover_Command>
     {
         Name = data.Name;
         Hp = new Hp_Model(data.Hp, this);
-        Shield = new Shield_Model(this, data.Max_Shield);
+        Shield = new Shield_Model(this, data.Shield);
         Effects = new();
         Team = new Team_Model(team);
-        Position = new Position_Model(start_position, data.Movment_Cooldown);
+        Position = new Position_Model(this, data.Movment, start_position);
 
         Mediator.Add_Handler(this);
     }

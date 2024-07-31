@@ -9,7 +9,7 @@ public class Range_Model : IRange_Model
     public int Amount
     {
         get => value;
-        protected set
+        set
         {
             this.@value = Math.Min(Max, Math.Max(Min, value));
         }
@@ -20,10 +20,5 @@ public class Range_Model : IRange_Model
         Max = max;
         Min = min;
         Amount = value ?? max;
-    }
-
-    public override string ToString()
-    {
-        return $"{Amount:d2} / {Max:d2}";
     }
 }

@@ -20,6 +20,6 @@ public class Stasis_Action_Model : Action_Model
             new Remove_Effect_Command(target.Effects.First()).Send();
         new Stasis_Model(time, target);
         foreach (var weapon in target.Weapons)
-            new Timer_Command(weapon.Cooldown, Timer_Action.Pause).Send();
+            (weapon.Cooldown as Timer_Model).Pause();
     }
 }

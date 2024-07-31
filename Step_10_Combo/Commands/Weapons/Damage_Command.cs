@@ -15,9 +15,9 @@ public record Damage_Command : Command, IAmount_Model
         Type = type;
     }
 
-    public override bool Send()
+    public override void Send()
     {
         Amount = original_value;
-        return base.Send();
+        base.Send();
     }
 }

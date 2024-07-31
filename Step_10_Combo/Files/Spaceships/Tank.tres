@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=8 format=3 uid="uid://dvqyobhdlt3sj"]
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=10 format=3 uid="uid://dvqyobhdlt3sj"]
 
 [ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_4q5li"]
 [ext_resource type="Resource" uid="uid://dem2dcjey5jyk" path="res://Files/Types/Fire.tres" id="1_ab3mr"]
 [ext_resource type="Script" path="res://Resources/Spaceship/Armor_Resource.cs" id="2_bxttw"]
 [ext_resource type="Resource" uid="uid://bfjka4owbgmxv" path="res://Files/Weapons/Fast_Attack.tres" id="3_hmqlm"]
+[ext_resource type="Script" path="res://Resources/Entity/Movment_Resource.cs" id="3_krb0u"]
 [ext_resource type="Resource" uid="uid://8uboksmxjb4f" path="res://Files/Weapons/Small_Dot.tres" id="4_qdror"]
 [ext_resource type="Resource" uid="uid://bku6vca51lcj7" path="res://Files/Weapons/Medium_Dot.tres" id="5_eekix"]
 
@@ -12,11 +13,16 @@ script = ExtResource("2_bxttw")
 Amount = 1
 Type = ExtResource("1_ab3mr")
 
+[sub_resource type="Resource" id="Resource_xak02"]
+script = ExtResource("3_krb0u")
+Recharge_Time = 4
+Max_Tiles = 2
+
 [resource]
 script = ExtResource("1_4q5li")
 Armor = Array[Object]([SubResource("Resource_ibtnc")])
 Weapons = Array[Object]([ExtResource("3_hmqlm"), ExtResource("4_qdror"), ExtResource("5_eekix")])
 Hp = 20
-Max_Shield = 10
-Movment_Cooldown = 5
+Shield = 10
+Movment = SubResource("Resource_xak02")
 Name = ""

@@ -1,15 +1,21 @@
-[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=5 format=3 uid="uid://c6fk6ceq4yhj1"]
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=7 format=3 uid="uid://c6fk6ceq4yhj1"]
 
+[ext_resource type="Script" path="res://Resources/Entity/Movment_Resource.cs" id="1_2icvf"]
 [ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_2p0mv"]
 [ext_resource type="Resource" uid="uid://cxg0bjkqobwj5" path="res://Files/Weapons/Shield.tres" id="1_t3wn3"]
 [ext_resource type="Resource" uid="uid://b5nk2kooxf3sd" path="res://Files/Weapons/Repair.tres" id="2_ucevc"]
 [ext_resource type="Resource" uid="uid://bfjka4owbgmxv" path="res://Files/Weapons/Fast_Attack.tres" id="3_0g7o1"]
+
+[sub_resource type="Resource" id="Resource_rnkla"]
+script = ExtResource("1_2icvf")
+Recharge_Time = 2
+Max_Tiles = 3
 
 [resource]
 script = ExtResource("1_2p0mv")
 Armor = null
 Weapons = Array[Object]([ExtResource("1_t3wn3"), ExtResource("2_ucevc"), ExtResource("3_0g7o1")])
 Hp = 7
-Max_Shield = 3
-Movment_Cooldown = 5
+Shield = 3
+Movment = SubResource("Resource_rnkla")
 Name = ""

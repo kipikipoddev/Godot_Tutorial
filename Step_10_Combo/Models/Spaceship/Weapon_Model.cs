@@ -59,7 +59,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
         if (Posible(cmd.Target))
         {
             Action.Perform(cmd.Target);
-            new Timer_Command(Cooldown).Send();
+            (Cooldown as Timer_Model).Start();
         }
     }
 }

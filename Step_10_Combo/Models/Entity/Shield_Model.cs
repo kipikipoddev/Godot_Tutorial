@@ -7,8 +7,8 @@ public class Shield_Model :
     IHandler<Damage_Command>,
     IHandler<Add_Shield_Command>
 {
-    public Shield_Model(IEntity_Model owner, int max_shield)
-        : base(max_shield)
+    public Shield_Model(IEntity_Model owner, int Shield)
+        : base(Shield)
     {
         Mediator.Add_Handler<Damage_Command>(this, owner);
         Mediator.Add_Handler<Add_Shield_Command>(this, owner);
@@ -34,10 +34,5 @@ public class Shield_Model :
     public void Handle(Add_Shield_Command cmd)
     {
         Amount += cmd.Amount;
-    }
-
-    public override string ToString()
-    {
-        return $"{Amount:d2} / {Max:d2}";
     }
 }

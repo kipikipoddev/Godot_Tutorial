@@ -20,9 +20,4 @@ public class Hp_Model : Range_Model, IHandler<Damage_Command>, IHandler<Heal_Com
     {
         Amount += cmd.Amount;
     }
-
-    public override string ToString()
-    {
-        return Amount == 0 ? "Dead" : base.ToString();
-    }
 }

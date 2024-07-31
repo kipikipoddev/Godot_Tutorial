@@ -13,8 +13,6 @@ public class Spaceship_Model : Entity_Model, ISpaceship_Model
     {
         Armor = data.Armor.Select(data => new Armor_Model(data, this)).ToArray();
         Weapons = data.Weapons.Select(a => a.Map(this)).ToArray();
-        new Movment_Model(this);
-
         Instances.Add<ISpaceship_Model>(this);
     }
 }

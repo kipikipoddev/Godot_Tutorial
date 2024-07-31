@@ -6,7 +6,7 @@ public interface IPosition_Model
 {
     Vector2I Value { get; }
 
-    ITimer_Model Movment_Cooldown { get; }
+    IRange_Model Movment_Charges { get; }
 
     int Get_Distance(Vector2I position);
 }
