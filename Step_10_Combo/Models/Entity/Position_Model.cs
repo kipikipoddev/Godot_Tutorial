@@ -45,7 +45,7 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
     {
         if (!owner.Is_Alive)
             return false;
-        if (owner.Effects.OfType<Stun_Model>().Any())
+        if (owner.Is_Stun())
             return false;
         return distance <= Movment_Charges.Amount;
     }

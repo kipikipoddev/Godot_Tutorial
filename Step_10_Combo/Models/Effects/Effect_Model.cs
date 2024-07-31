@@ -2,7 +2,7 @@
 
 namespace Hex_Space_Rpg.Models;
 
-public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Command>
+public abstract class Effect_Model : IEffect_Model
 {
     protected readonly IEntity_Model Target;
     protected readonly Timer_Model Timer;
@@ -17,13 +17,7 @@ public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Comma
         Name = name;
         Timer = new Timer_Model(time, Done);
         Target = target;
-        Mediator.Add_Handler(this);
         Add_To_Effects();
-    }
-
-    public void Handle(Remove_Effect_Command cmd)
-    {
-        Remove();
     }
 
     public void Remove()
@@ -41,7 +35,7 @@ public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Comma
     {
         var existing = Target.Effects.FirstOrDefault(e => e.Name == Name);
         if (existing != null)
-            new Remove_Effect_Command(existing).Send();
+            (existing as Effect_Model).Remove();
         Target.Effects.Add(this);
     }
 }

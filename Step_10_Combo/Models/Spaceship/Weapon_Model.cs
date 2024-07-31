@@ -26,40 +26,30 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
         Mediator.Add_Handler(this);
     }
 
-    public bool Posible()
-    {
-        if (!Owner.Is_Alive | !Cooldown.Done)
-            return false;
-        return !Owner.Effects.OfType<Stun_Model>().Any();
-    }
-
     public bool Posible(IEntity_Model target)
     {
-        if (!Posible())
+        if (!Owner.Is_Alive | Cooldown.Running | Owner.Is_Stun())
             return false;
 
         if (target == null || !target.Is_Alive)
             return false;
 
-        if (Owner.Effects.OfType<Stun_Model>().Any())
+        if (target.Is_Stasis())
             return false;
 
-        if (target.Effects.OfType<Stasis_Model>().Any())
+        if (!Action.Posible(target))
             return false;
 
         var distance = Owner.Position.Get_Distance(target.Position.Value);
-        if (distance > Range)
-            return false;
-
-        return Action.Posible(target);
+        return distance <= Range;
     }
 
     public void Handle(Fire_Weapon_Command cmd)
     {
-        if (Posible(cmd.Target))
-        {
-            Action.Perform(cmd.Target);
-            (Cooldown as Timer_Model).Start();
-        }
+        if (!Posible(cmd.Target))
+            return;
+            
+        Action.Perform(cmd.Target);
+        (Cooldown as Timer_Model).Start();
     }
 }

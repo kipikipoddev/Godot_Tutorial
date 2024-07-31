@@ -21,4 +21,9 @@ public class Stun_Action_Model : Action_Model
         new Damage_Command(target, damage, Owner.Type).Send();
         new Stun_Model(time, target);
     }
+
+    public override bool Posible(IEntity_Model target)
+    {
+        return base.Posible(target) & !target.Is_Stun();
+    }
 }

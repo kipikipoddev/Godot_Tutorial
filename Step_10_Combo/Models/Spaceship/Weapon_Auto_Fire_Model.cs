@@ -15,7 +15,7 @@ public class Weapon_Auto_Fire_Model : IListener<Update_Event>
 
     public void Handle(Update_Event evnt)
     {
-        if (weapon.Is_Cooldown)
+        if (weapon.In_Cooldown)
             return;
 
         var target = Get_Target();

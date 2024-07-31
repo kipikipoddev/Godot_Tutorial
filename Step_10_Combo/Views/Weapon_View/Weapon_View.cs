@@ -8,6 +8,9 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
     public Color Cooldown_Color;
 
     [Export]
+    public Color Block_Color;
+
+    [Export]
     public Color Ideal_Color;
 
     private Label label;
@@ -22,14 +25,16 @@ public partial class Weapon_View : Base_View<IWeapon_Model>
     public override void _Process(double delta)
     {
         var name = Model.Name;
-        if (Model.Cooldown.Running)
+        if (Model.In_Cooldown)
             name += " " + Model.Cooldown.Current.ToString("F1");
         label.Text = name.Replace(' ', '\n');
     }
 
     protected override void Update()
     {
-        border.Modulate = Model.Is_Cooldown ? Cooldown_Color : Ideal_Color;
+        border.Modulate = Model.In_Cooldown ?
+            Cooldown_Color :
+            Model.Cant_Shoot ? Block_Color : Ideal_Color;
     }
 
     protected override void On_Model_Changed()

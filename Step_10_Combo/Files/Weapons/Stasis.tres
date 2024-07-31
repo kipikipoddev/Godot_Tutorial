@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://ct61u84jxuilt"]
+
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_4vrym"]
+[ext_resource type="Script" path="res://Resources/Actions/Stasis_Resource.cs" id="1_v2gym"]
+[ext_resource type="Resource" uid="uid://cp0id1tbpvh5y" path="res://Files/Types/Magical.tres" id="2_xljyc"]
+
+[sub_resource type="Resource" id="Resource_hfop7"]
+script = ExtResource("1_v2gym")
+Effect_Time = 2
+
+[resource]
+script = ExtResource("1_4vrym")
+Cooldown_Time = 10
+Range = 1
+Type = ExtResource("2_xljyc")
+Action = SubResource("Resource_hfop7")
+Name = ""

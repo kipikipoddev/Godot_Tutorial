@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2l6g7lo8xull"]
+[gd_scene load_steps=9 format=3 uid="uid://c2l6g7lo8xull"]
 
 [ext_resource type="Script" path="res://Views/Main_View/Main_View.cs" id="1_quepd"]
 [ext_resource type="PackedScene" uid="uid://b5qo813bi084j" path="res://Views/Spaceship_View/Spaceship_View.tscn" id="2_di2ag"]
 [ext_resource type="Resource" uid="uid://dvqyobhdlt3sj" path="res://Files/Spaceships/Tank.tres" id="4_o4kqm"]
 [ext_resource type="Resource" uid="uid://c2yhwqiv4aw8s" path="res://Files/Teams/Blue_Team.tres" id="5_qpnr8"]
+[ext_resource type="Resource" uid="uid://d3vj37f0pukef" path="res://Files/Spaceships/Range_Effects.tres" id="6_v5e8i"]
 [ext_resource type="Resource" uid="uid://b1wrf4ovs6vg" path="res://Files/Teams/Red_Team.tres" id="6_xja1i"]
 [ext_resource type="Resource" uid="uid://c6fk6ceq4yhj1" path="res://Files/Spaceships/Support.tres" id="7_nq5ge"]
 [ext_resource type="PackedScene" uid="uid://b6j16yxrro66m" path="res://Views/Tile_Map/Tile_Map.tscn" id="8_kf5wb"]
@@ -24,6 +25,13 @@ scale = Vector2(1.5, 1.5)
 Spaceship = ExtResource("4_o4kqm")
 Team = ExtResource("5_qpnr8")
 Start_Position = Vector2i(-1, 3)
+
+[node name="Blue_Range_Effects" parent="." instance=ExtResource("2_di2ag")]
+position = Vector2(-879, 343)
+scale = Vector2(1.5, 1.5)
+Spaceship = ExtResource("6_v5e8i")
+Team = ExtResource("5_qpnr8")
+Start_Position = Vector2i(0, 1)
 
 [node name="Red_Tank" parent="." instance=ExtResource("2_di2ag")]
 position = Vector2(-879, 343)
