@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=10 format=3 uid="uid://djfpnv2yxolcm"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=13 format=3 uid="uid://djfpnv2yxolcm"]
 
 [ext_resource type="Script" path="res://Resources/Actions/Damage_Resource.cs" id="1_0goff"]
 [ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_tn8iv"]
 [ext_resource type="Script" path="res://Resources/Actions/Root_Resource.cs" id="2_qtx21"]
+[ext_resource type="Script" path="res://Resources/Actions/Aggregate_Resource.cs" id="3_bo3r2"]
 [ext_resource type="Script" path="res://Resources/Actions/Combo_Resource.cs" id="3_lhmg2"]
 [ext_resource type="Resource" uid="uid://dt6mggb4n8jke" path="res://Files/Types/Ice.tres" id="4_kwfl7"]
 
@@ -14,13 +15,21 @@ Amount = 1
 script = ExtResource("1_0goff")
 Amount = 2
 
-[sub_resource type="Resource" id="Resource_l571j"]
+[sub_resource type="Resource" id="Resource_cf55j"]
+script = ExtResource("1_0goff")
+Amount = 2
+
+[sub_resource type="Resource" id="Resource_x6xxo"]
 script = ExtResource("2_qtx21")
-Efect_Time = 3
+Efect_Time = 4
+
+[sub_resource type="Resource" id="Resource_nrcjj"]
+script = ExtResource("3_bo3r2")
+Actions = Array[Object]([SubResource("Resource_cf55j"), SubResource("Resource_x6xxo")])
 
 [sub_resource type="Resource" id="Resource_hx1ra"]
 script = ExtResource("3_lhmg2")
-Actions = Array[Object]([SubResource("Resource_xtxnm"), SubResource("Resource_8akgr"), SubResource("Resource_l571j")])
+Actions = Array[Object]([SubResource("Resource_xtxnm"), SubResource("Resource_8akgr"), SubResource("Resource_nrcjj")])
 
 [resource]
 script = ExtResource("1_tn8iv")
