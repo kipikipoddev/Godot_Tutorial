@@ -3,14 +3,17 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Weapon_Auto_Fire_Model : IListener<Update_Event>
+public class Weapon_Fire_Model : IListener<Update_Event>
 {
     private readonly IWeapon_Model weapon;
+    public bool Auto_Fire_Mode { get; private set; }
 
-    public Weapon_Auto_Fire_Model(IWeapon_Model weapon)
+    public Weapon_Fire_Model(IWeapon_Model weapon, bool auto_fire)
     {
         this.weapon = weapon;
-        Mediator.Add_Listener(this);
+        Auto_Fire_Mode = auto_fire;
+        if (auto_fire)
+            Mediator.Add_Listener(this);
     }
 
     public void Handle(Update_Event evnt)

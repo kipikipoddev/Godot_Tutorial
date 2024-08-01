@@ -7,16 +7,19 @@ namespace Hex_Space_Rpg.Definitions;
 public partial class Weapon_Resource : Named_Resource
 {
 	[Export(PropertyHint.Range, "1,10")]
-	public int Cooldown_Time;
+	public int Cooldown_Time = 1;
 
 	[Export(PropertyHint.Range, "1,10")]
-	public int Range;
+	public int Range = 1;
 
 	[Export]
 	public Type_Resource Type;
 
 	[Export]
 	public Action_Resource Action;
+
+	[Export]
+	public bool Auto_Fire = true;
 
 	public Weapon_Data Map()
 	{
@@ -26,6 +29,7 @@ public partial class Weapon_Resource : Named_Resource
 			Cooldown_Time = Cooldown_Time,
 			Type = Type.Map(),
 			Range = Range,
+			Auto_Fire = Auto_Fire,
 			Action = Action.Map(this)
 		};
 	}

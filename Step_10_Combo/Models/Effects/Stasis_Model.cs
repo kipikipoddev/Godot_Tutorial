@@ -1,4 +1,6 @@
-﻿namespace Hex_Space_Rpg.Models;
+﻿using Hex_Space_Rpg.Commands;
+
+namespace Hex_Space_Rpg.Models;
 
 public class Stasis_Model : Stun_Model
 {
@@ -11,8 +13,9 @@ public class Stasis_Model : Stun_Model
     protected override void Done()
     {
         base.Done();
-        foreach (var weapon in (Target as ISpaceship_Model).Weapons)
-            (weapon.Cooldown as Timer_Model).Resume();
+        if (Target is ISpaceship_Model ship)
+            foreach (var weapon in ship.Weapons)
+                new Timer_Command(weapon.Cooldown, Timer_Action.Resume).Send();
     }
 }
 

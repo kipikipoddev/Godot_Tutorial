@@ -33,7 +33,3 @@ text = "Name
 label_settings = ExtResource("3_lvdis")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="mouse_entered" from="Button" to="." method="On_Mouse_Entered"]
-[connection signal="mouse_exited" from="Button" to="." method="On_Mouse_Exited"]
-[connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]

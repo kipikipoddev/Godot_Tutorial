@@ -11,17 +11,17 @@ public static class Instances
         instances[type].Add(obj);
     }
 
-    public static T Get<T>()
+    public static T Get<T>(params object[] args)
     {
         return instances.ContainsKey(typeof(T)) ?
             (T)instances[typeof(T)].FirstOrDefault() :
-            Create<T>();
+            Create<T>(args);
     }
 
-    public static T Create<T>()
+    public static T Create<T>(params object[] args)
     {
         var type = Get_Type<T>();
-        var obj = (T)Activator.CreateInstance(type);
+        var obj = (T)Activator.CreateInstance(type, args);
         Add(obj);
         return obj;
     }

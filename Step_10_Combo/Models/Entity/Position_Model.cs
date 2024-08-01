@@ -32,7 +32,7 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
         {
             Value = cmd.Position;
             movment_charges.Amount -= distance;
-            recharge_timer.Start();
+            new Timer_Command(recharge_timer).Send();
         }
     }
 
@@ -55,7 +55,7 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
         if (Movment_Charges.Not_Max)
         {
             movment_charges.Amount++;
-            recharge_timer.Start();
+            new Timer_Command(recharge_timer).Send();
         }
     }
 }

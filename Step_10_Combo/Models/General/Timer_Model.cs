@@ -1,8 +1,9 @@
-﻿using Hex_Space_Rpg.Events;
+﻿using Hex_Space_Rpg.Commands;
+using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Timer_Model : ITimer_Model, IListener<Time_Event>
+public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_Command>
 {
     private readonly Action done_action;
 
@@ -16,6 +17,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>
         this.done_action = done_action;
         if (Interval > 0)
             Start();
+        Mediator.Add_Handler(this);
     }
 
     public void Handle(Time_Event evt)
@@ -25,7 +27,26 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>
             Done();
     }
 
-    public void Resume()
+    public void Handle(Timer_Command cmd)
+    {
+        switch (cmd.Action)
+        {
+            case Timer_Action.Start:
+                Start();
+                break;
+            case Timer_Action.Pause:
+                Pause();
+                break;
+            case Timer_Action.Stop:
+                Stop();
+                break;
+            case Timer_Action.Resume:
+                Resume();
+                break;
+        }
+    }
+
+    protected void Resume()
     {
         if (State != State.Pause)
             return;
@@ -33,7 +54,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>
         Mediator.Add_Listener(this);
     }
 
-    public void Pause()
+    protected void Pause()
     {
         if (State != State.In_Progress)
             return;
@@ -41,7 +62,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>
         State = State.Pause;
     }
 
-    public void Start()
+    protected void Start()
     {
         if (State == State.In_Progress)
             return;
@@ -50,13 +71,13 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>
         Mediator.Add_Listener(this);
     }
 
-    public void Stop()
+    protected void Stop()
     {
         State = State.Not_Started;
         Mediator.Remove_Listener(this);
     }
 
-    public void Reset()
+    protected void Reset()
     {
         Stop();
         Start();
