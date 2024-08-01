@@ -8,7 +8,6 @@ public interface IWeapon_Model : IName_Model, ITyped
     ISpaceship_Model Owner { get; }
     ITimer_Model Cooldown { get; }
     IAction_Model Action { get; }
-    bool Is_Auto_Fire { get; }
 
     bool In_Cooldown => Cooldown.Running;
     bool Cant_Shoot => Owner.Is_Stun();

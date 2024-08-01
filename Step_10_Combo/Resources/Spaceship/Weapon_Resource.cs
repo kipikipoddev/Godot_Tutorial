@@ -18,9 +18,6 @@ public partial class Weapon_Resource : Named_Resource
 	[Export]
 	public Action_Resource Action;
 
-	[Export]
-	public bool Auto_Fire = true;
-
 	public Weapon_Data Map()
 	{
 		return new Weapon_Data()
@@ -29,7 +26,6 @@ public partial class Weapon_Resource : Named_Resource
 			Cooldown_Time = Cooldown_Time,
 			Type = Type.Map(),
 			Range = Range,
-			Auto_Fire = Auto_Fire,
 			Action = Action.Map(this)
 		};
 	}

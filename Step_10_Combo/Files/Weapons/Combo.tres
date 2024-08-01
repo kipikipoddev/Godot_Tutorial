@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=10 format=3 uid="uid://djfpnv2yxolcm"]
+
+[ext_resource type="Script" path="res://Resources/Actions/Damage_Resource.cs" id="1_0goff"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_tn8iv"]
+[ext_resource type="Script" path="res://Resources/Actions/Root_Resource.cs" id="2_qtx21"]
+[ext_resource type="Script" path="res://Resources/Actions/Combo_Resource.cs" id="3_lhmg2"]
+[ext_resource type="Resource" uid="uid://dt6mggb4n8jke" path="res://Files/Types/Ice.tres" id="4_kwfl7"]
+
+[sub_resource type="Resource" id="Resource_xtxnm"]
+script = ExtResource("1_0goff")
+Amount = 1
+
+[sub_resource type="Resource" id="Resource_8akgr"]
+script = ExtResource("1_0goff")
+Amount = 2
+
+[sub_resource type="Resource" id="Resource_l571j"]
+script = ExtResource("2_qtx21")
+Efect_Time = 3
+Damage = 2
+
+[sub_resource type="Resource" id="Resource_hx1ra"]
+script = ExtResource("3_lhmg2")
+Actions = Array[Object]([SubResource("Resource_xtxnm"), SubResource("Resource_8akgr"), SubResource("Resource_l571j")])
+
+[resource]
+script = ExtResource("1_tn8iv")
+Cooldown_Time = 5
+Range = 2
+Type = ExtResource("4_kwfl7")
+Action = SubResource("Resource_hx1ra")
+Name = ""

@@ -5,15 +5,12 @@ namespace Hex_Space_Rpg.Models;
 
 public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
 {
-    private readonly Weapon_Fire_Model fire_model;
-
     public string Name { get; }
     public int Range { get; }
     public ISpaceship_Model Owner { get; }
     public ITimer_Model Cooldown { get; }
     public IType_Model Type { get; }
     public IAction_Model Action { get; }
-    public bool Is_Auto_Fire => fire_model.Auto_Fire_Mode;
 
     public Weapon_Model(Weapon_Data data, ISpaceship_Model owner)
     {
@@ -23,7 +20,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
         Cooldown = new Timer_Model(data.Cooldown_Time);
         Type = new Type_Model(data.Type);
         Range = data.Range;
-        fire_model = new Weapon_Fire_Model(this, data.Auto_Fire);
+        new Weapon_Fire_Model(this);
 
         Mediator.Add_Handler(this);
     }

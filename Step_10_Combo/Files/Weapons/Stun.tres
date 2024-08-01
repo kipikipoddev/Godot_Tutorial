@@ -11,7 +11,7 @@ Damage = 1
 
 [resource]
 script = ExtResource("1_xpytl")
-Cooldown_Time = 7
+Cooldown_Time = 70
 Range = 2
 Type = ExtResource("2_y3hw5")
 Action = SubResource("Resource_5lpa0")

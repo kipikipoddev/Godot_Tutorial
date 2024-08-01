@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=6 format=3 uid="uid://d3vj37f0pukef"]
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=7 format=3 uid="uid://d3vj37f0pukef"]
 
 [ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_0y2h8"]
 [ext_resource type="Script" path="res://Resources/Entity/Movment_Resource.cs" id="1_jajko"]
 [ext_resource type="Resource" uid="uid://7x8to3osd4x8" path="res://Files/Weapons/Stun.tres" id="2_j8t7t"]
 [ext_resource type="Resource" uid="uid://ct61u84jxuilt" path="res://Files/Weapons/Stasis.tres" id="3_utpif"]
+[ext_resource type="Resource" uid="uid://djfpnv2yxolcm" path="res://Files/Weapons/Combo.tres" id="4_ldqdo"]
 
 [sub_resource type="Resource" id="Resource_e54sx"]
 script = ExtResource("1_jajko")
@@ -13,7 +14,7 @@ Max_Tiles = 3
 [resource]
 script = ExtResource("1_0y2h8")
 Armor = null
-Weapons = Array[Object]([ExtResource("2_j8t7t"), ExtResource("3_utpif")])
+Weapons = Array[Object]([ExtResource("2_j8t7t"), ExtResource("3_utpif"), ExtResource("4_ldqdo")])
 Hp = 10
 Shield = 10
 Movment = SubResource("Resource_e54sx")

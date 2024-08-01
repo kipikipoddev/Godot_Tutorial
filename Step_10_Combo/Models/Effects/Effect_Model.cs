@@ -5,12 +5,10 @@ namespace Hex_Space_Rpg.Models;
 public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Command>
 {
     protected readonly IEntity_Model Target;
-    protected readonly Timer_Model Timer;
 
+    public ITimer_Model Timer { get; private set; }
     public string Name { get; protected set; }
-
-    public Type_Model Type { get; protected set; }
-
+    public Type_Model Type { get; private set; }
 
     public Effect_Model(string name, int time, IEntity_Model target)
     {

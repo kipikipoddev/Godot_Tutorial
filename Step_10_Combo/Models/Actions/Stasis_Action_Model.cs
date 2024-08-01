@@ -16,8 +16,8 @@ public class Stasis_Action_Model : Action_Model
 
     public override void Perform(ISpaceship_Model target)
     {
-        while (target.Effects.Any())
-            new Remove_Effect_Command(target.Effects.First()).Send();
+        foreach (var effect in target.Effects)
+            new Timer_Command(effect.Timer, Timer_Action.Pause).Send();
         new Stasis_Model(time, target);
         foreach (var weapon in target.Weapons)
             new Timer_Command(weapon.Cooldown, Timer_Action.Pause).Send();

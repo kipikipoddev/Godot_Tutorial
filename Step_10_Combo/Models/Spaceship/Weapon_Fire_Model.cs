@@ -6,14 +6,11 @@ namespace Hex_Space_Rpg.Models;
 public class Weapon_Fire_Model : IListener<Update_Event>
 {
     private readonly IWeapon_Model weapon;
-    public bool Auto_Fire_Mode { get; private set; }
 
-    public Weapon_Fire_Model(IWeapon_Model weapon, bool auto_fire)
+    public Weapon_Fire_Model(IWeapon_Model weapon)
     {
         this.weapon = weapon;
-        Auto_Fire_Mode = auto_fire;
-        if (auto_fire)
-            Mediator.Add_Listener(this);
+        Mediator.Add_Listener(this);
     }
 
     public void Handle(Update_Event evnt)

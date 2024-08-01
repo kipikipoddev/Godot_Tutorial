@@ -43,9 +43,7 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
 
     private bool Can_Move(int distance)
     {
-        if (!owner.Is_Alive)
-            return false;
-        if (owner.Is_Stun())
+        if (!owner.Is_Alive | owner.Is_Root())
             return false;
         return distance <= Movment_Charges.Amount;
     }

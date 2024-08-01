@@ -1,10 +1,11 @@
 ﻿namespace Hex_Space_Rpg.Models;
 
-public class Stun_Model : Effect_Model
+public class Stun_Model : Root_Model
 {
     public Stun_Model(int time, ISpaceship_Model target)
-        : base("Stun", time, target)
+        : base(time, target)
     {
+        Name = "Stun";
     }
 }
 
