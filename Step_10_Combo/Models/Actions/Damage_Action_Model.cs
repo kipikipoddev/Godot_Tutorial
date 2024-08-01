@@ -14,7 +14,7 @@ public class Damage_Action_Model : Action_Model
         amount = data.Amount;
     }
 
-    public override void Perform(ISpaceship_Model target)
+    public override void Perform(IEntity_Model target)
     {
         new Damage_Command(target, amount, Owner.Type).Send();
     }

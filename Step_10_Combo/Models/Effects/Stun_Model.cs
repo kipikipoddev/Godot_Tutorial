@@ -2,7 +2,7 @@
 
 public class Stun_Model : Root_Model
 {
-    public Stun_Model(int time, ISpaceship_Model target)
+    public Stun_Model(int time, IEntity_Model target)
         : base(time, target)
     {
         Name = "Stun";

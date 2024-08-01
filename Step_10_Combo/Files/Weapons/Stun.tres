@@ -7,7 +7,6 @@
 [sub_resource type="Resource" id="Resource_5lpa0"]
 script = ExtResource("1_qftwr")
 Efect_Time = 2
-Damage = 1
 
 [resource]
 script = ExtResource("1_xpytl")

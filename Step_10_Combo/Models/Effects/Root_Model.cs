@@ -2,7 +2,7 @@
 
 public class Root_Model : Effect_Model
 {
-    public Root_Model(int time, ISpaceship_Model target)
+    public Root_Model(int time, IEntity_Model target)
         : base("Root", time, target)
     {
     }

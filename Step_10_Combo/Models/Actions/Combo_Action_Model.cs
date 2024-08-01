@@ -14,7 +14,7 @@ public class Combo_Action_Model : Action_Model
         actions = data.Actions.Select(a => a.Map(owner)).ToArray();
     }
 
-    public override void Perform(ISpaceship_Model target)
+    public override void Perform(IEntity_Model target)
     {
         actions[combo_index].Perform(target);
         combo_index = (combo_index + 1) % actions.Length;

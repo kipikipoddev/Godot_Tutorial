@@ -13,13 +13,8 @@ public class Heal_Action_Model : Action_Model
         amount = data.Amount;
     }
 
-    public override void Perform(ISpaceship_Model target)
+    public override void Perform(IEntity_Model target)
     {
         new Heal_Command(target, amount).Send();
-    }
-
-    public override bool Posible(IEntity_Model target)
-    {
-        return base.Posible(target) & target.Hp.Not_Max;
     }
 }

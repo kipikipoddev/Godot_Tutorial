@@ -4,7 +4,7 @@ namespace Hex_Space_Rpg.Models;
 
 public class Stasis_Model : Stun_Model
 {
-    public Stasis_Model(int time, ISpaceship_Model target)
+    public Stasis_Model(int time, IEntity_Model target)
         : base(time, target)
     {
         Name = "Stasis";

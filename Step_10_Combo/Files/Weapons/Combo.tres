@@ -17,7 +17,6 @@ Amount = 2
 [sub_resource type="Resource" id="Resource_l571j"]
 script = ExtResource("2_qtx21")
 Efect_Time = 3
-Damage = 2
 
 [sub_resource type="Resource" id="Resource_hx1ra"]
 script = ExtResource("3_lhmg2")
