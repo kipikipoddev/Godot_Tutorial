@@ -4,13 +4,16 @@ using Godot;
 namespace Hex_Space_Rpg.Definitions;
 
 [GlobalClass]
-public partial class Heal_Resource : Action_Resource
+public partial class Buff_Resource : Effect_Resource
 {
 	[Export(PropertyHint.Range, "1,10")]
 	public int Amount;
 
+	[Export(PropertyHint.Enum)]
+	public Buff_Type Type;
+
 	public override Action_Data Map(Weapon_Resource weapon)
 	{
-		return new Heal_Data(Amount);
+		return new Buff_Data(Effect_Time, Amount, Type);
 	}
 }

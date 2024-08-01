@@ -35,7 +35,7 @@ public class Weapon_Fire_Model : IListener<Update_Event>
     {
         if (weapon.Action is Shield_Action_Model)
             return Get_Order(target.Shield);
-        else if (weapon.Action is Heal_Action_Model)
+        else if (weapon.Action is Repair_Action_Model)
             return Get_Order(target.Hp);
         else
             return target.Position.Get_Distance(weapon.Owner.Position.Value);

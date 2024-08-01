@@ -2,10 +2,10 @@ using Hex_Space_Rpg.Models;
 
 namespace Hex_Space_Rpg.Datas;
 
-public record Heal_Data(int Amount) : Action_Data
+public record Repair_Data(int Amount) : Action_Data
 {
 	public override IAction_Model Map(IWeapon_Model owner)
 	{
-		return new Heal_Action_Model(this, owner);
+		return new Repair_Action_Model(this, owner);
 	}
 }

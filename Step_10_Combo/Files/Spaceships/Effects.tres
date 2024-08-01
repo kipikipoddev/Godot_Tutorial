@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Spaceship_Resource" load_steps=6 format=3 uid="uid://bjh0n12v6oo4m"]
+
+[ext_resource type="Script" path="res://Resources/Entity/Movment_Resource.cs" id="1_jnjvw"]
+[ext_resource type="Resource" uid="uid://bmwsf0mkbt4kq" path="res://Files/Weapons/Buff.tres" id="2_w2w12"]
+[ext_resource type="Resource" uid="uid://bfjka4owbgmxv" path="res://Files/Weapons/Fast_Attack.tres" id="3_ky5xl"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="5_awnp4"]
+
+[sub_resource type="Resource" id="Resource_e54sx"]
+script = ExtResource("1_jnjvw")
+Recharge_Time = 2
+Max_Tiles = 3
+
+[resource]
+script = ExtResource("5_awnp4")
+Armor = null
+Weapons = Array[Object]([ExtResource("2_w2w12"), ExtResource("3_ky5xl")])
+Hp = 10
+Shield = 10
+Movment = SubResource("Resource_e54sx")
+Name = ""

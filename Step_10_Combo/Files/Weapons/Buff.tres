@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://bmwsf0mkbt4kq"]
+
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_2wrue"]
+[ext_resource type="Script" path="res://Resources/Actions/Buff_Resource.cs" id="1_4ypgi"]
+[ext_resource type="Resource" uid="uid://c8fw7ioha8blx" path="res://Files/Types/General.tres" id="2_h77o5"]
+
+[sub_resource type="Resource" id="Resource_ugtbf"]
+script = ExtResource("1_4ypgi")
+Amount = 5
+Type = 0
+Effect_Time = 5
+
+[resource]
+script = ExtResource("1_2wrue")
+Cooldown_Time = 3
+Range = 3
+Type = ExtResource("2_h77o5")
+Action = SubResource("Resource_ugtbf")
+Name = ""
