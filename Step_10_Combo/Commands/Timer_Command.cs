@@ -8,6 +8,6 @@ public enum Timer_Action
     Resume
 }
 
-public record Timer_Command(ITimer_Model Timer, Timer_Action Action = Timer_Action.Start) : Command(Timer)
+public record Timer_Command(ITimer_Model Timer, Timer_Action Action = Timer_Action.Start, int Reduction = 0) : Command(Timer)
 {
 }

@@ -11,7 +11,6 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
     private readonly Range_Model movment_charges;
     private readonly Timer_Model recharge_timer;
 
-
     public Vector2I Value { get; private set; }
     public IRange_Model Movment_Charges => movment_charges;
 
@@ -53,7 +52,8 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
         if (Movment_Charges.Not_Max)
         {
             movment_charges.Amount++;
-            new Timer_Command(recharge_timer).Send();
+            var reduction = owner.Get_Buff(Buff_Type.Movment);
+            new Timer_Command(recharge_timer, Timer_Action.Start, reduction).Send();
         }
     }
 }

@@ -49,6 +49,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
             return;
 
         Action.Perform(cmd.Target);
-        new Timer_Command(Cooldown).Send();
+        var reduction = Owner.Get_Buff(Buff_Type.Cooldown);
+        new Timer_Command(Cooldown, Timer_Action.Start, reduction).Send();
     }
 }

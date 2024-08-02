@@ -32,7 +32,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_C
         switch (cmd.Action)
         {
             case Timer_Action.Start:
-                Start();
+                Start(cmd.Reduction);
                 break;
             case Timer_Action.Pause:
                 Pause();
@@ -62,11 +62,11 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_C
         State = State.Pause;
     }
 
-    protected void Start()
+    protected void Start(int reduction = 0)
     {
         if (State == State.In_Progress)
             return;
-        Current = Interval;
+        Current = Math.Max(1, Interval - reduction);
         State = State.In_Progress;
         Mediator.Add_Listener(this);
     }
