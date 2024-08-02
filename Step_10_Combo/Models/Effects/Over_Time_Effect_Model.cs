@@ -7,6 +7,8 @@ public class Over_Time_Effect_Model : Effect_Model
     private int left;
     private readonly IAction_Model action;
 
+    public override bool Is_Friendly => action.On_Friendly;
+
     public Over_Time_Effect_Model(string name, int times, IAction_Model action, int time, IEntity_Model target)
         : base(name, time, target)
     {

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=7 format=3 uid="uid://cmqmwo6wp7e7k"]
+
+[ext_resource type="Script" path="res://Resources/Actions/Damage_Resource.cs" id="1_2p7uf"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_6yr8s"]
+[ext_resource type="Script" path="res://Resources/Actions/Root_Resource.cs" id="2_aa0w7"]
+[ext_resource type="Resource" uid="uid://dt6mggb4n8jke" path="res://Files/Types/Ice.tres" id="4_58xbj"]
+
+[sub_resource type="Resource" id="Resource_vcov1"]
+script = ExtResource("1_2p7uf")
+Amount = 4
+
+[sub_resource type="Resource" id="Resource_efeyu"]
+script = ExtResource("2_aa0w7")
+Effect_Time = 4
+
+[resource]
+script = ExtResource("1_6yr8s")
+Cooldown_Time = 10
+Range = 2
+Type = ExtResource("4_58xbj")
+Action = SubResource("Resource_vcov1")
+Self_Action = SubResource("Resource_efeyu")
+Name = ""

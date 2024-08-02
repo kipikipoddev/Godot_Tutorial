@@ -11,7 +11,7 @@ public enum State
 public interface ITimer_Model
 {
     double Current { get; }
-    double Interval { get; }
+    int Interval { get; }
     State State { get; }
 
     bool Running => State == State.In_Progress | State == State.Pause;

@@ -11,12 +11,14 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
     public ITimer_Model Cooldown { get; }
     public IType_Model Type { get; }
     public IAction_Model Action { get; }
+    public IAction_Model Self_Action { get; }
 
     public Weapon_Model(Weapon_Data data, ISpaceship_Model owner)
     {
         Name = data.Name;
         Owner = owner;
         Action = data.Action.Map(this);
+        Self_Action = data.Self_Action?.Map(this);
         Cooldown = new Timer_Model(data.Cooldown_Time);
         Type = new Type_Model(data.Type);
         Range = data.Range;
@@ -49,7 +51,8 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
             return;
 
         Action.Perform(cmd.Target);
-        var reduction = Owner.Get_Buff(Buff_Type.Cooldown);
-        new Timer_Command(Cooldown, Timer_Action.Start, reduction).Send();
+        Self_Action?.Perform(Owner);
+        var interval = Owner.Get_Buffed(Buff_Type.Cooldown, Cooldown.Interval);
+        new Timer_Command(Cooldown, Timer_Action.Start, interval).Send();
     }
 }

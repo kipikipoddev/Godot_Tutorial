@@ -9,13 +9,13 @@
 script = ExtResource("1_4ypgi")
 Amount = 2
 Type = 0
-Effect_Time = 3
+Effect_Time = 10
 
 [sub_resource type="Resource" id="Resource_ie42y"]
 script = ExtResource("1_4ypgi")
 Amount = 2
 Type = 3
-Effect_Time = 3
+Effect_Time = 10
 
 [sub_resource type="Resource" id="Resource_8rrsn"]
 script = ExtResource("2_g8qhx")
@@ -23,7 +23,7 @@ Actions = Array[Object]([SubResource("Resource_mk5kb"), SubResource("Resource_ie
 
 [resource]
 script = ExtResource("1_2wrue")
-Cooldown_Time = 10
+Cooldown_Time = 3
 Range = 3
 Type = ExtResource("2_h77o5")
 Action = SubResource("Resource_8rrsn")

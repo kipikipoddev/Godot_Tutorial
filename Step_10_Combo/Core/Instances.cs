@@ -1,4 +1,8 @@
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Godot;
+
 public static class Instances
 {
     private static readonly Dictionary<Type, List<object>> instances = new();
@@ -35,7 +39,10 @@ public static class Instances
 
     private static Type Get_Type<T>()
     {
+        var type = typeof(T);
+        if (type.IsClass)
+            return type;
         return typeof(Instances).Assembly.GetTypes()
-            .First(t => t.IsClass & t.IsAssignableTo(typeof(T)));
+            .First(t => t.IsClass & t.IsAssignableTo(type));
     }
 }

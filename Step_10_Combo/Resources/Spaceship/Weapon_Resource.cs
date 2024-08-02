@@ -18,6 +18,9 @@ public partial class Weapon_Resource : Named_Resource
 	[Export]
 	public Action_Resource Action;
 
+	[Export]
+	public Action_Resource Self_Action;
+
 	public Weapon_Data Map()
 	{
 		return new Weapon_Data()
@@ -26,7 +29,8 @@ public partial class Weapon_Resource : Named_Resource
 			Cooldown_Time = Cooldown_Time,
 			Type = Type.Map(),
 			Range = Range,
-			Action = Action.Map(this)
+			Action = Action.Map(this),
+			Self_Action = Self_Action?.Map(this)
 		};
 	}
 }

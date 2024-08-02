@@ -52,8 +52,8 @@ public class Position_Model : IPosition_Model, IHandler<Move_Command>
         if (Movment_Charges.Not_Max)
         {
             movment_charges.Amount++;
-            var reduction = owner.Get_Buff(Buff_Type.Movment);
-            new Timer_Command(recharge_timer, Timer_Action.Start, reduction).Send();
+            var interval = owner.Get_Buffed(Buff_Type.Movment, recharge_timer.Interval);
+            new Timer_Command(recharge_timer, Timer_Action.Start, interval).Send();
         }
     }
 }

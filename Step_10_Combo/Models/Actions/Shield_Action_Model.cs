@@ -15,6 +15,7 @@ public class Shield_Action_Model : Action_Model
 
     public override void Perform(IEntity_Model target)
     {
-        new Add_Shield_Command(target, amount).Send();
+        var buffed_amount = Owner.Owner.Get_Buffed(Buff_Type.Shield, amount);
+        new Add_Shield_Command(target, buffed_amount).Send();
     }
 }

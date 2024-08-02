@@ -6,6 +6,7 @@ public enum Buff_Type
 {
 	Damage,
 	Repair,
+	Shield,
 	Movment,
 	Cooldown
 }

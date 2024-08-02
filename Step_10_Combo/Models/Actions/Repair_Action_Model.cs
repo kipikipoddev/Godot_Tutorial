@@ -15,7 +15,7 @@ public class Repair_Action_Model : Action_Model
 
     public override void Perform(IEntity_Model target)
     {
-        var buffed_amount = amount + Owner.Owner.Get_Buff(Buff_Type.Repair);
+        var buffed_amount = Owner.Owner.Get_Buffed(Buff_Type.Repair, amount);
         new Heal_Command(target, buffed_amount).Send();
     }
 }

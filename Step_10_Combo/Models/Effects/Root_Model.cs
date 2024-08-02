@@ -2,6 +2,8 @@
 
 public class Root_Model : Effect_Model
 {
+    public override bool Is_Friendly => false;
+
     public Root_Model(int time, IEntity_Model target)
         : base("Root", time, target)
     {

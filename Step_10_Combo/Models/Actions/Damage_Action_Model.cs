@@ -16,7 +16,7 @@ public class Damage_Action_Model : Action_Model
 
     public override void Perform(IEntity_Model target)
     {
-        var buffed_amount = amount + Owner.Owner.Get_Buff(Buff_Type.Damage);
+        var buffed_amount = Owner.Owner.Get_Buffed(Buff_Type.Damage, amount);
         new Damage_Command(target, buffed_amount, Owner.Type).Send();
     }
 }

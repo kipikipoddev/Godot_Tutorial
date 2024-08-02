@@ -9,6 +9,7 @@ public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Comma
     public ITimer_Model Timer { get; private set; }
     public string Name { get; protected set; }
     public Type_Model Type { get; private set; }
+    public abstract bool Is_Friendly { get; }
 
     public Effect_Model(string name, int time, IEntity_Model target)
     {

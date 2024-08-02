@@ -26,9 +26,25 @@ public class Weapon_Fire_Model : IListener<Update_Event>
     private ISpaceship_Model Get_Target()
     {
         return Instances.Get_All<ISpaceship_Model>()
-            .Where(s => weapon.Posible(s))
+            .Where(s => Get_Posible(weapon.Action, s))
             .OrderBy(Get_Order)
             .FirstOrDefault();
+    }
+
+    private bool Get_Posible(IAction_Model action, ISpaceship_Model target)
+    {
+        var posible = weapon.Posible(target);
+        if (!posible)
+            return false;
+        if (action is Shield_Action_Model)
+            return target.Shield.Not_Max;
+        else if (action is Repair_Action_Model)
+            return target.Hp.Not_Max;
+        else if (action is Buff_Action_Model buff)
+            return !target.Effects.OfType<Buff_Model>().Any(b => b.Name == buff.Name);
+        else if (action is Aggregate_Action_Model agg)
+            return Get_Posible(agg.Actions[0], target);
+        return true;
     }
 
     private int Get_Order(ISpaceship_Model target)
