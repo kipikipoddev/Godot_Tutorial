@@ -7,7 +7,7 @@ public class Stasis_Action_Model : Action_Model
 {
     private readonly int time;
 
-    public Stasis_Action_Model(Stasis_Data data, IWeapon_Model owner)
+    public Stasis_Action_Model(Stasis_Data data, IAbility_Model owner)
         : base(owner)
     {
         time = data.Effect_Time;
@@ -20,7 +20,7 @@ public class Stasis_Action_Model : Action_Model
             new Timer_Command(effect.Timer, Timer_Action.Pause).Send();
         new Stasis_Model(time, target);
         if (target is ISpaceship_Model ship)
-            foreach (var weapon in ship.Weapons)
-                new Timer_Command(weapon.Cooldown, Timer_Action.Pause).Send();
+            foreach (var ability in ship.Abilities)
+                new Timer_Command(ability.Cooldown, Timer_Action.Pause).Send();
     }
 }

@@ -2,7 +2,7 @@ using Hex_Space_Rpg.Models;
 
 namespace Hex_Space_Rpg.Datas;
 
-public class Weapon_Data : Named_Data
+public class Ability_Data : Named_Data
 {
     public int Cooldown_Time;
     public int Range;
@@ -10,8 +10,8 @@ public class Weapon_Data : Named_Data
     public Action_Data Action;
     public Action_Data Self_Action;
 
-    public IWeapon_Model Map(ISpaceship_Model owner)
+    public IAbility_Model Map(ISpaceship_Model owner)
     {
-        return new Weapon_Model(this, owner);
+        return new Ability_Model(this, owner);
     }
 }

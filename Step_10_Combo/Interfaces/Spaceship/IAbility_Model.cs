@@ -2,7 +2,7 @@ using Hex_Space_Rpg.Models;
 
 namespace Hex_Space_Rpg.Interfaces;
 
-public interface IWeapon_Model : IName_Model, ITyped
+public interface IAbility_Model : IName_Model, ITyped
 {
     int Range { get; }
     ISpaceship_Model Owner { get; }

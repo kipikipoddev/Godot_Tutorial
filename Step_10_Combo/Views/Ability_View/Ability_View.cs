@@ -2,7 +2,7 @@ using Godot;
 
 namespace Hex_Space_Rpg.Views;
 
-public partial class Weapon_View : Base_View<IWeapon_Model>
+public partial class Ability_View : Base_View<IAbility_Model>
 {
     [Export]
     public Color Cooldown_Color;

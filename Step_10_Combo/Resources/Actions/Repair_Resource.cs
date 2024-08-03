@@ -9,7 +9,7 @@ public partial class Repair_Resource : Action_Resource
 	[Export(PropertyHint.Range, "1,10")]
 	public int Amount;
 
-	public override Action_Data Map(Weapon_Resource weapon)
+	public override Action_Data Map(Ability_Resource ability)
 	{
 		return new Repair_Data(Amount);
 	}

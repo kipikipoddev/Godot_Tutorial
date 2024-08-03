@@ -7,7 +7,7 @@ public class Shield_Action_Model : Action_Model
 {
     private readonly int amount;
 
-    public Shield_Action_Model(Shield_Data data, IWeapon_Model owner)
+    public Shield_Action_Model(Shield_Data data, IAbility_Model owner)
         : base(owner)
     {
         amount = data.Amount;

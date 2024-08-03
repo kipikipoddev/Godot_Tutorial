@@ -7,7 +7,7 @@ public class Combo_Action_Model : Action_Model
     private readonly IAction_Model[] actions;
     private int combo_index;
 
-    public Combo_Action_Model(Combo_Data data, IWeapon_Model owner)
+    public Combo_Action_Model(Combo_Data data, IAbility_Model owner)
         : base(owner)
     {
         On_Friendly = false;

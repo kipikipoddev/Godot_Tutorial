@@ -12,7 +12,7 @@ public partial class Debuff_Resource : Effect_Resource
 	[Export(PropertyHint.Enum)]
 	public Buff_Type Type;
 
-	public override Action_Data Map(Weapon_Resource weapon)
+	public override Action_Data Map(Ability_Resource ability)
 	{
 		return new Buff_Data(Effect_Time, -Amount, Type);
 	}

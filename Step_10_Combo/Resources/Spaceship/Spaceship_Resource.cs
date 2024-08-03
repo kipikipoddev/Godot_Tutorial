@@ -10,14 +10,14 @@ public partial class Spaceship_Resource : Entity_Resource
     public Armor_Resource[] Armor;
 
     [Export]
-    public Weapon_Resource[] Weapons;
+    public Ability_Resource[] Abilities;
 
     public Spaceship_Data Map()
     {
         var data = new Spaceship_Data()
         {
             Armor = Armor.Select(a => a.Map()).ToArray(),
-            Weapons = Weapons.Select(a => a.Map()).ToArray()
+            Abilities = Abilities.Select(a => a.Map()).ToArray()
         };
         Add(data);
         return data;

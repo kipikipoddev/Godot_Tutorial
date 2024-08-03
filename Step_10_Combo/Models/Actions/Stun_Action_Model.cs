@@ -5,7 +5,7 @@ namespace Hex_Space_Rpg.Models;
 public class Stun_Action_Model : Action_Model
 {
     private readonly int time;
-    public Stun_Action_Model(Stun_Data data, IWeapon_Model owner)
+    public Stun_Action_Model(Stun_Data data, IAbility_Model owner)
         : base(owner)
     {
         On_Friendly = false;

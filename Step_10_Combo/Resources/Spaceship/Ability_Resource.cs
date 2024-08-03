@@ -4,7 +4,7 @@ using Godot;
 namespace Hex_Space_Rpg.Definitions;
 
 [GlobalClass]
-public partial class Weapon_Resource : Named_Resource
+public partial class Ability_Resource : Named_Resource
 {
 	[Export(PropertyHint.Range, "1,10")]
 	public int Cooldown_Time = 1;
@@ -21,9 +21,9 @@ public partial class Weapon_Resource : Named_Resource
 	[Export]
 	public Action_Resource Self_Action;
 
-	public Weapon_Data Map()
+	public Ability_Data Map()
 	{
-		return new Weapon_Data()
+		return new Ability_Data()
 		{
 			Name = Name,
 			Cooldown_Time = Cooldown_Time,

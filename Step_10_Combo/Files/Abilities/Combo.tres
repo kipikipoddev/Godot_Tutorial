@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=13 format=3 uid="uid://djfpnv2yxolcm"]
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=13 format=3 uid="uid://djfpnv2yxolcm"]
 
 [ext_resource type="Script" path="res://Resources/Actions/Damage_Resource.cs" id="1_0goff"]
-[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_tn8iv"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Ability_Resource.cs" id="1_tn8iv"]
 [ext_resource type="Script" path="res://Resources/Actions/Root_Resource.cs" id="2_qtx21"]
 [ext_resource type="Script" path="res://Resources/Actions/Aggregate_Resource.cs" id="3_bo3r2"]
 [ext_resource type="Script" path="res://Resources/Actions/Combo_Resource.cs" id="3_lhmg2"]

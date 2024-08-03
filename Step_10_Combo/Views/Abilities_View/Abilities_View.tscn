@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddorpvmtc8f51"]
+
+[ext_resource type="Script" path="res://Views/Abilities_View/Abilities_View.cs" id="1_t4lx3"]
+[ext_resource type="PackedScene" uid="uid://bsh23p42nxwdh" path="res://Views/Ability_View/Ability_View.tscn" id="3_sfn3c"]
+
+[node name="Abilities_View" type="Node2D"]
+script = ExtResource("1_t4lx3")
+
+[node name="Ability_1" parent="." instance=ExtResource("3_sfn3c")]
+position = Vector2(127, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Ability_2" parent="." instance=ExtResource("3_sfn3c")]
+position = Vector2(-129, -2)
+scale = Vector2(0.5, 0.5)
+
+[node name="Ability_3" parent="." instance=ExtResource("3_sfn3c")]
+position = Vector2(62, 86)
+scale = Vector2(0.5, 0.5)
+
+[node name="Ability_4" parent="." instance=ExtResource("3_sfn3c")]
+position = Vector2(-65, 87)
+scale = Vector2(0.5, 0.5)

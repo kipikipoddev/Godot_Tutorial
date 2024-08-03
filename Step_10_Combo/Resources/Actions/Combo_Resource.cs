@@ -9,9 +9,9 @@ public partial class Combo_Resource : Action_Resource
 	[Export]
 	public Action_Resource[] Actions;
 
-	public override Action_Data Map(Weapon_Resource weapon)
+	public override Action_Data Map(Ability_Resource ability)
 	{
-		var actions = Actions.Select(a => a.Map(weapon)).ToArray();
+		var actions = Actions.Select(a => a.Map(ability)).ToArray();
 		return new Combo_Data(actions);
 	}
 }

@@ -7,7 +7,7 @@ public class Damage_Action_Model : Action_Model
 {
     private readonly int amount;
 
-    public Damage_Action_Model(Damage_Data data, IWeapon_Model owner)
+    public Damage_Action_Model(Damage_Data data, IAbility_Model owner)
         : base(owner)
     {
         On_Friendly = false;

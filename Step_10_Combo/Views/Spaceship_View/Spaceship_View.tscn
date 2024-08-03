@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Views/Spaceship_View/Spaceship_View.cs" id="1_4e7o4"]
 [ext_resource type="PackedScene" uid="uid://ccrkqp0do1icp" path="res://Views/Entity_View/Entity_View.tscn" id="2_6iw08"]
-[ext_resource type="PackedScene" uid="uid://ddorpvmtc8f51" path="res://Views/Weapons_View/Weapons_View.tscn" id="4_quc5j"]
+[ext_resource type="PackedScene" uid="uid://ddorpvmtc8f51" path="res://Views/Abilities_View/Abilities_View.tscn" id="4_quc5j"]
 
 [node name="Spaceship_View" type="Node2D"]
 script = ExtResource("1_4e7o4")
@@ -20,7 +20,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 2
 alignment = 2
 
-[node name="Weapons_View" parent="." instance=ExtResource("4_quc5j")]
+[node name="Abilities_View" parent="." instance=ExtResource("4_quc5j")]
 position = Vector2(3, 0)
 
 [node name="Dead_Label" type="Label" parent="."]

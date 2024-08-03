@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=8 format=3 uid="uid://bmwsf0mkbt4kq"]
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=8 format=3 uid="uid://bmwsf0mkbt4kq"]
 
-[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_2wrue"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Ability_Resource.cs" id="1_2wrue"]
 [ext_resource type="Script" path="res://Resources/Actions/Buff_Resource.cs" id="1_4ypgi"]
 [ext_resource type="Script" path="res://Resources/Actions/Aggregate_Resource.cs" id="2_g8qhx"]
 [ext_resource type="Resource" uid="uid://c8fw7ioha8blx" path="res://Files/Types/General.tres" id="2_h77o5"]

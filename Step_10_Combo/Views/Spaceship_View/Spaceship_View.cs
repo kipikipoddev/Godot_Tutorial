@@ -16,7 +16,7 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
 
     private Label dead_label;
     private HBoxContainer armor_hb;
-    private Weapons_View weapons_view;
+    private Abilities_View weapons_view;
     private IGrid_Model grid;
 
     public Spaceship_View()
@@ -27,13 +27,13 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
     public override void _Ready()
     {
         armor_hb = GetNode<HBoxContainer>("Armor");
-        weapons_view = GetNode<Weapons_View>("Weapons_View");
+        weapons_view = GetNode<Abilities_View>("Abilities_View");
         dead_label = GetNode<Label>("Dead_Label");
         var entity_view = GetNode<Entity_View>("Entity_View");
 
         Model = Spaceship.Map().Map(Team.Map(), Start_Position);
         entity_view.Model = Model;
-        weapons_view.Model = Model.Weapons;
+        weapons_view.Model = Model.Abilities;
         Set_Armor();
     }
 

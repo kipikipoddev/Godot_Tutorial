@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://7x8to3osd4x8"]
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=5 format=3 uid="uid://7x8to3osd4x8"]
 
 [ext_resource type="Script" path="res://Resources/Actions/Stun_Resource.cs" id="1_qftwr"]
-[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_xpytl"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Ability_Resource.cs" id="1_xpytl"]
 [ext_resource type="Resource" uid="uid://cjpx7euj1ncr3" path="res://Files/Types/Physical.tres" id="2_y3hw5"]
 
 [sub_resource type="Resource" id="Resource_5lpa0"]

@@ -7,7 +7,7 @@ public class Repair_Action_Model : Action_Model
 {
     private readonly int amount;
 
-    public Repair_Action_Model(Repair_Data data, IWeapon_Model owner)
+    public Repair_Action_Model(Repair_Data data, IAbility_Model owner)
         : base(owner)
     {
         amount = data.Amount;

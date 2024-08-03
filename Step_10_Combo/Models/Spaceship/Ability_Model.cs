@@ -3,7 +3,7 @@ using Hex_Space_Rpg.Datas;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
+public class Ability_Model : IAbility_Model, IHandler<Fire_Ability_Command>
 {
     public string Name { get; }
     public int Range { get; }
@@ -13,7 +13,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
     public IAction_Model Action { get; }
     public IAction_Model Self_Action { get; }
 
-    public Weapon_Model(Weapon_Data data, ISpaceship_Model owner)
+    public Ability_Model(Ability_Data data, ISpaceship_Model owner)
     {
         Name = data.Name;
         Owner = owner;
@@ -22,7 +22,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
         Cooldown = new Timer_Model(data.Cooldown_Time);
         Type = new Type_Model(data.Type);
         Range = data.Range;
-        new Weapon_Fire_Model(this);
+        new Ability_Fire_Model(this);
 
         Mediator.Add_Handler(this);
     }
@@ -45,7 +45,7 @@ public class Weapon_Model : IWeapon_Model, IHandler<Fire_Weapon_Command>
         return distance <= Range;
     }
 
-    public void Handle(Fire_Weapon_Command cmd)
+    public void Handle(Fire_Ability_Command cmd)
     {
         if (!Posible(cmd.Target))
             return;

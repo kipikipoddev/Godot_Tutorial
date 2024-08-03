@@ -6,7 +6,7 @@ public class Root_Action_Model : Action_Model
 {
     private readonly int time;
 
-    public Root_Action_Model(Root_Data data, IWeapon_Model owner)
+    public Root_Action_Model(Root_Data data, IAbility_Model owner)
         : base(owner)
     {
         On_Friendly = false;

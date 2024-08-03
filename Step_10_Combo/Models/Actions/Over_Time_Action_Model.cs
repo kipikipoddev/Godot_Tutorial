@@ -10,7 +10,7 @@ public class Over_Time_Action_Model : Action_Model
     private readonly int time;
 
 
-    public Over_Time_Action_Model(Over_Time_Data data, IWeapon_Model owner)
+    public Over_Time_Action_Model(Over_Time_Data data, IAbility_Model owner)
         : base(owner)
     {
         times = data.Occur_Times;

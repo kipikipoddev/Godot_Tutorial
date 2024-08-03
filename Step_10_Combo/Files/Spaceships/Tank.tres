@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Resources/Spaceship/Spaceship_Resource.cs" id="1_4q5li"]
 [ext_resource type="Resource" uid="uid://dem2dcjey5jyk" path="res://Files/Types/Fire.tres" id="1_ab3mr"]
 [ext_resource type="Script" path="res://Resources/Spaceship/Armor_Resource.cs" id="2_bxttw"]
-[ext_resource type="Resource" uid="uid://bfjka4owbgmxv" path="res://Files/Weapons/Fast_Attack.tres" id="3_hmqlm"]
+[ext_resource type="Resource" uid="uid://bfjka4owbgmxv" path="res://Files/Abilities/Fast_Attack.tres" id="3_hmqlm"]
 [ext_resource type="Script" path="res://Resources/Entity/Movment_Resource.cs" id="3_krb0u"]
-[ext_resource type="Resource" uid="uid://8uboksmxjb4f" path="res://Files/Weapons/Small_Dot.tres" id="4_qdror"]
-[ext_resource type="Resource" uid="uid://bku6vca51lcj7" path="res://Files/Weapons/Medium_Dot.tres" id="5_eekix"]
+[ext_resource type="Resource" uid="uid://8uboksmxjb4f" path="res://Files/Abilities/Small_Dot.tres" id="4_qdror"]
+[ext_resource type="Resource" uid="uid://bku6vca51lcj7" path="res://Files/Abilities/Medium_Dot.tres" id="5_eekix"]
 
 [sub_resource type="Resource" id="Resource_ibtnc"]
 script = ExtResource("2_bxttw")
@@ -21,7 +21,7 @@ Max_Tiles = 2
 [resource]
 script = ExtResource("1_4q5li")
 Armor = Array[Object]([SubResource("Resource_ibtnc")])
-Weapons = Array[Object]([ExtResource("3_hmqlm"), ExtResource("4_qdror"), ExtResource("5_eekix")])
+Abilities = Array[Object]([ExtResource("3_hmqlm"), ExtResource("4_qdror"), ExtResource("5_eekix")])
 Hp = 20
 Shield = 10
 Movment = SubResource("Resource_xak02")

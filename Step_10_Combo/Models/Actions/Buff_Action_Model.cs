@@ -9,7 +9,7 @@ public class Buff_Action_Model : Action_Model, IName_Model
     private readonly Buff_Type type;
     public string Name => type.ToString();
 
-    public Buff_Action_Model(Buff_Data data, IWeapon_Model owner)
+    public Buff_Action_Model(Buff_Data data, IAbility_Model owner)
         : base(owner)
     {
         amount = data.Amount;

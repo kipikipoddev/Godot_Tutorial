@@ -2,11 +2,11 @@
 
 public abstract class Action_Model : IAction_Model
 {
-    protected readonly IWeapon_Model Owner;
+    protected readonly IAbility_Model Owner;
 
     public bool On_Friendly { get; protected set; }
 
-    public Action_Model(IWeapon_Model owner)
+    public Action_Model(IAbility_Model owner)
     {
         Owner = owner;
         On_Friendly = true;

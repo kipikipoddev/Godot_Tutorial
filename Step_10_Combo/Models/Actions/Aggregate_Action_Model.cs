@@ -6,7 +6,7 @@ public class Aggregate_Action_Model : Action_Model
 {
     public IAction_Model[] Actions { get; }
 
-    public Aggregate_Action_Model(Aggregate_Data data, IWeapon_Model owner)
+    public Aggregate_Action_Model(Aggregate_Data data, IAbility_Model owner)
         : base(owner)
     {
         Actions = data.Actions.Select(a => a.Map(owner)).ToArray();

@@ -3,37 +3,37 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Weapon_Fire_Model : IListener<Update_Event>
+public class Ability_Fire_Model : IListener<Update_Event>
 {
-    private readonly IWeapon_Model weapon;
+    private readonly IAbility_Model ability;
 
-    public Weapon_Fire_Model(IWeapon_Model weapon)
+    public Ability_Fire_Model(IAbility_Model ability)
     {
-        this.weapon = weapon;
+        this.ability = ability;
         Mediator.Add_Listener(this);
     }
 
     public void Handle(Update_Event evnt)
     {
-        if (weapon.In_Cooldown)
+        if (ability.In_Cooldown)
             return;
 
         var target = Get_Target();
         if (target != null)
-            new Fire_Weapon_Command(weapon, target).Send();
+            new Fire_Ability_Command(ability, target).Send();
     }
 
     private ISpaceship_Model Get_Target()
     {
         return Instances.Get_All<ISpaceship_Model>()
-            .Where(s => Get_Posible(weapon.Action, s))
+            .Where(s => Get_Posible(ability.Action, s))
             .OrderBy(Get_Order)
             .FirstOrDefault();
     }
 
     private bool Get_Posible(IAction_Model action, ISpaceship_Model target)
     {
-        var posible = weapon.Posible(target);
+        var posible = ability.Posible(target);
         if (!posible)
             return false;
         if (action is Shield_Action_Model)
@@ -49,12 +49,12 @@ public class Weapon_Fire_Model : IListener<Update_Event>
 
     private int Get_Order(ISpaceship_Model target)
     {
-        if (weapon.Action is Shield_Action_Model)
+        if (ability.Action is Shield_Action_Model)
             return Get_Order(target.Shield);
-        else if (weapon.Action is Repair_Action_Model)
+        else if (ability.Action is Repair_Action_Model)
             return Get_Order(target.Hp);
         else
-            return target.Position.Get_Distance(weapon.Owner.Position.Value);
+            return target.Position.Get_Distance(ability.Owner.Position.Value);
     }
 
     private int Get_Order(IRange_Model range)

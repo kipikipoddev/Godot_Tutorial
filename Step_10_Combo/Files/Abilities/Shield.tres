@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=5 format=3 uid="uid://cxg0bjkqobwj5"]
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=5 format=3 uid="uid://cxg0bjkqobwj5"]
 
 [ext_resource type="Script" path="res://Resources/Actions/Shield_Resource.cs" id="1_fuph3"]
-[ext_resource type="Script" path="res://Resources/Spaceship/Weapon_Resource.cs" id="1_hpigs"]
+[ext_resource type="Script" path="res://Resources/Spaceship/Ability_Resource.cs" id="1_hpigs"]
 [ext_resource type="Resource" uid="uid://xph56vs5qf06" path="res://Files/Types/Natural.tres" id="2_8wjqv"]
 
 [sub_resource type="Resource" id="Resource_ee6rh"]
