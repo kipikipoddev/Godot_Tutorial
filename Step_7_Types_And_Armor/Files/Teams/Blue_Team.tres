@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="Team_Resource" load_steps=2 format=3 uid="uid://c2yhwqiv4aw8s"]
-
-[ext_resource type="Script" path="res://Resources/Entity/Team_Resource.cs" id="1_70lnt"]
-
-[resource]
-script = ExtResource("1_70lnt")
-Color = Color(0.145098, 0.380392, 1, 1)

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Armor_Resource" load_steps=3 format=3 uid="uid://cl6rv1sapor4a"]
-
-[ext_resource type="Resource" uid="uid://cp0id1tbpvh5y" path="res://Files/Types/Magical.tres" id="1_rey3p"]
-[ext_resource type="Script" path="res://Resources/Spaceship/Armor_Resource.cs" id="2_0crnc"]
-
-[resource]
-script = ExtResource("2_0crnc")
-Amount = 1
-Type = ExtResource("1_rey3p")

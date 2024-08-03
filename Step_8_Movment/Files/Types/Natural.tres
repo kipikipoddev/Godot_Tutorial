@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Type_Resource" load_steps=3 format=3 uid="uid://xph56vs5qf06"]
-
-[ext_resource type="Resource" uid="uid://c8fw7ioha8blx" path="res://Resources/Types/General.tres" id="1_fy3mm"]
-[ext_resource type="Script" path="res://Resources/General/Type_Resource.cs" id="2_fr4d0"]
-
-[resource]
-script = ExtResource("2_fr4d0")
-Parent = ExtResource("1_fy3mm")
-Color = Color(0.105882, 1, 0.529412, 1)
