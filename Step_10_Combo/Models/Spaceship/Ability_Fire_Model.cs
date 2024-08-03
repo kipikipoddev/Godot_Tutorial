@@ -50,14 +50,14 @@ public class Ability_Fire_Model : IListener<Update_Event>
     private int Get_Order(ISpaceship_Model target)
     {
         if (ability.Action is Shield_Action_Model)
-            return Get_Order(target.Shield);
+            return Get_Range_Order(target.Shield);
         else if (ability.Action is Repair_Action_Model)
-            return Get_Order(target.Hp);
+            return Get_Range_Order(target.Hp);
         else
             return target.Position.Get_Distance(ability.Owner.Position.Value);
     }
 
-    private int Get_Order(IRange_Model range)
+    private int Get_Range_Order(IRange_Model range)
     {
         return range.Amount - range.Max;
     }

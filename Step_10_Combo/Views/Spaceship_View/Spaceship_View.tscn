@@ -6,7 +6,6 @@
 
 [node name="Spaceship_View" type="Node2D"]
 script = ExtResource("1_4e7o4")
-Start_Position = null
 
 [node name="Entity_View" parent="." instance=ExtResource("2_6iw08")]
 position = Vector2(0, 2)

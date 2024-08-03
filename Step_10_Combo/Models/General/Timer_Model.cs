@@ -11,7 +11,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_C
     public int Interval { get; protected set; }
     public State State { get; private set; }
 
-    public Timer_Model(int interval, Action? done_action = null)
+    public Timer_Model(int interval, Action done_action = null)
     {
         Interval = interval;
         this.done_action = done_action;

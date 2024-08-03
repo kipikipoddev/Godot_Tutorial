@@ -18,7 +18,7 @@ position = Vector2(0, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(19, -44)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.4, 0.4)
 
 [node name="Blue_Tank" parent="." instance=ExtResource("2_di2ag")]
 position = Vector2(-879, 343)
