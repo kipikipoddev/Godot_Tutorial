@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccrkqp0do1icp"]
+[gd_scene load_steps=12 format=3 uid="uid://ccrkqp0do1icp"]
 
 [ext_resource type="Script" path="res://Views/Entity_View/Entity_View.cs" id="1_bf7wx"]
-[ext_resource type="PackedScene" uid="uid://b3jqt5ar05rk1" path="res://Views/Bar/Bar.tscn" id="2_bsli7"]
+[ext_resource type="PackedScene" uid="uid://b3jqt5ar05rk1" path="res://Views/Bar_View/Bar_View.tscn" id="2_bsli7"]
 [ext_resource type="Script" path="res://Resources/General/Ratio_Resource.cs" id="3_fae3h"]
 [ext_resource type="Texture2D" uid="uid://bj8kq1o4eeqcx" path="res://Assets/colorful-spaceship-collection-with-flat-design/Ship.png" id="4_57mea"]
+[ext_resource type="PackedScene" uid="uid://c3ij2il2gwg8r" path="res://Views/Effects_View/Effects_View.tscn" id="5_plroq"]
 [ext_resource type="LabelSettings" uid="uid://bbhatjmtb4fru" path="res://Assets/Neg_Label.tres" id="5_s05j6"]
-[ext_resource type="LabelSettings" uid="uid://by8ufo5drwysv" path="res://Assets/Pos_Lebel.tres" id="6_sxc6j"]
+[ext_resource type="LabelSettings" uid="uid://by8ufo5drwysv" path="res://Assets/Pos_Label.tres" id="7_aky3c"]
 
 [sub_resource type="Resource" id="Resource_j8jfh"]
 script = ExtResource("3_fae3h")
@@ -53,70 +54,6 @@ position = Vector2(1, 10)
 scale = Vector2(0.204075, 0.159632)
 texture = ExtResource("4_57mea")
 
-[node name="Neg_Effects" type="VBoxContainer" parent="."]
-offset_left = -110.0
-offset_top = -39.0
-offset_right = -15.0
-offset_bottom = 29.0
-
-[node name="Neg_Label_1" type="Label" parent="Neg_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("5_s05j6")
-horizontal_alignment = 2
-
-[node name="Neg_Label_2" type="Label" parent="Neg_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("5_s05j6")
-horizontal_alignment = 2
-
-[node name="Neg_Label_3" type="Label" parent="Neg_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("5_s05j6")
-horizontal_alignment = 2
-
-[node name="Neg_Label_4" type="Label" parent="Neg_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("5_s05j6")
-horizontal_alignment = 2
-
-[node name="Pos_Effects" type="VBoxContainer" parent="."]
-offset_left = 15.0
-offset_top = -39.0
-offset_right = 65.0
-offset_bottom = 65.0
-
-[node name="Pos_Label_1" type="Label" parent="Pos_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("6_sxc6j")
-
-[node name="Pos_Label_2" type="Label" parent="Pos_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("6_sxc6j")
-
-[node name="Pos_Label_3" type="Label" parent="Pos_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("6_sxc6j")
-
-[node name="Pos_Label_4" type="Label" parent="Pos_Effects"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
-label_settings = ExtResource("6_sxc6j")
-
 [node name="Movment_Label" type="Label" parent="."]
 offset_left = -49.0
 offset_top = 15.0
@@ -124,3 +61,12 @@ offset_right = 51.0
 offset_bottom = 38.0
 text = "XX"
 horizontal_alignment = 1
+
+[node name="Neg_Effects" parent="." instance=ExtResource("5_plroq")]
+position = Vector2(-64, -39)
+LabelSettings = ExtResource("5_s05j6")
+
+[node name="Pos_Effects" parent="." instance=ExtResource("5_plroq")]
+position = Vector2(16, -36)
+LabelSettings = ExtResource("7_aky3c")
+Is_Friendly = true

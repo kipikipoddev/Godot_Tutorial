@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3jqt5ar05rk1"]
 
-[ext_resource type="Script" path="res://Views/Bar/Bar.cs" id="1_kxyrq"]
+[ext_resource type="Script" path="res://Views/Bar_View/Bar_View.cs" id="1_kxyrq"]
 [ext_resource type="LabelSettings" uid="uid://cmdefx38l6lu0" path="res://Assets/Label_Settings_Small.tres" id="3_dmgu7"]
 
 [node name="Bar" type="Node2D"]

@@ -2,7 +2,7 @@ using Godot;
 using Hex_Space_Rpg.Definitions;
 using Hex_Space_Rpg.Views;
 
-public partial class Bar : Base_View<IRange_Model>
+public partial class Bar_View : Base_View<IRange_Model>
 {
     [Export]
     public Ratio_Resource[] Ratios;
