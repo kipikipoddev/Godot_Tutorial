@@ -1,9 +1,8 @@
 using Godot;
-using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Views;
 
-public partial class Tile_Map : Node2D, IListener<Highlight_Event>
+public partial class Tile_Map : Node2D
 {
     private const string Can_Select = "can_select";
     private TileMap tile_map;
@@ -12,12 +11,10 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
     private Vector2I selected_cord = new Vector2I(2, 0);
     private Vector2I? origin;
     private Vector2I highlighted;
-    private Vector2I[] highlighted_positions;
 
     public override void _Ready()
     {
         tile_map = GetNode<TileMap>("Tile_Map");
-        Mediator.Add_Listener(this);
 
         grid = Instances.Get<IGrid_Model>();
         grid.Converter = p => tile_map.MapToLocal(p.Value);
@@ -43,14 +40,6 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
             Clicked(pos);
     }
 
-    public void Handle(Highlight_Event evnt)
-    {
-        Clear_selected(highlighted);
-        highlighted_positions = evnt.Positions;
-        foreach (var position in highlighted_positions)
-            tile_map.SetCell(1, position, 0, selected_cord);
-    }
-
     private void Clicked(Vector2I pos)
     {
         grid.Select(origin.Value, pos);
@@ -70,7 +59,7 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
 
     private void Clear_selected(Vector2I? pos)
     {
-        if (pos.HasValue && (!highlighted_positions?.Contains(pos.Value) ?? true))
+        if (pos.HasValue)
             tile_map.EraseCell(1, pos.Value);
     }
 

@@ -2,16 +2,12 @@
 
 namespace Hex_Space_Rpg.Models;
 
-public class Shield_Model :
-    Range_Model,
-    IHandler<Damage_Command>,
-    IHandler<Add_Shield_Command>
+public class Shield_Model : Range_Model, IHandler<Damage_Command>
 {
     public Shield_Model(IEntity_Model owner, int Shield)
         : base(Shield)
     {
         Mediator.Add_Handler<Damage_Command>(this, owner);
-        Mediator.Add_Handler<Add_Shield_Command>(this, owner);
     }
 
     public void Handle(Damage_Command cmd)
@@ -29,10 +25,5 @@ public class Shield_Model :
             Amount = new_value;
             cmd.Amount = 0;
         }
-    }
-
-    public void Handle(Add_Shield_Command cmd)
-    {
-        Amount += cmd.Amount;
     }
 }

@@ -11,11 +11,11 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_C
     public int Interval { get; protected set; }
     public State State { get; private set; }
 
-    public Timer_Model(int interval, Action done_action = null)
+    public Timer_Model(int interval, Action done_action = null, bool auto_start = true)
     {
         Interval = interval;
         this.done_action = done_action;
-        if (Interval > 0)
+        if (auto_start)
             Start();
         Mediator.Add_Handler(this);
     }
@@ -62,7 +62,7 @@ public class Timer_Model : ITimer_Model, IListener<Time_Event>, IHandler<Timer_C
         State = State.Pause;
     }
 
-    protected void Start(int interval = 0)
+    protected void Start(double interval = 0)
     {
         if (State == State.In_Progress)
             return;

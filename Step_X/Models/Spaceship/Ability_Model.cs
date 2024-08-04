@@ -35,10 +35,13 @@ public class Ability_Model : IAbility_Model, IHandler<Fire_Ability_Command>
         if (target == null || !target.Is_Alive)
             return false;
 
-        if (target.Is_Stasis())
+        if (target.Is_Stasis() | target.Position.Is_Moving)
             return false;
 
         if (!Action.Posible(target))
+            return false;
+
+        if (Owner.Position.Is_Moving)
             return false;
 
         var distance = Owner.Position.Get_Distance(target.Position.Value);

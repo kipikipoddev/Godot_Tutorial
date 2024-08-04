@@ -1,6 +1,8 @@
-﻿namespace Hex_Space_Rpg.Models;
+﻿using Hex_Space_Rpg.Commands;
 
-public class Range_Model : IRange_Model
+namespace Hex_Space_Rpg.Models;
+
+public class Range_Model : IRange_Model, IHandler<Add_Amount_Command>
 {
     private int value;
 
@@ -20,5 +22,11 @@ public class Range_Model : IRange_Model
         Max = max;
         Min = min;
         Amount = value ?? max;
+        Mediator.Add_Handler(this);
+    }
+
+    public void Handle(Add_Amount_Command cmd)
+    {
+        Amount += cmd.Amount;
     }
 }

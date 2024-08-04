@@ -4,22 +4,12 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
+public class Grid_Model : IGrid_Model
 {
     private IEntity_Model hovering;
 
     public Func<IPosition_Model, Vector2> Converter { get; set; }
     public Func<Vector2I, bool> Is_Valid { get; set; }
-
-    public Grid_Model()
-    {
-        Mediator.Add_Listener(this);
-    }
-
-    public void Handle(Highlight_Event evnt)
-    {
-        Clear_Hover();
-    }
 
     public void Clear_Hover()
     {

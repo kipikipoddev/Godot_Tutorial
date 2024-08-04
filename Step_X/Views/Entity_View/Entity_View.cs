@@ -1,8 +1,9 @@
 using Godot;
+using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Views;
 
-public partial class Entity_View : Base_View<IEntity_Model>
+public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Event>
 {
     private Bar_View hp_Bar;
     private Bar_View shield_bar;
@@ -10,7 +11,8 @@ public partial class Entity_View : Base_View<IEntity_Model>
     private Label movment_label;
     private Effects_View neg_effects;
     private Effects_View pos_effects;
-
+    private AnimationPlayer animation;
+    
     public override void _Ready()
     {
         hp_Bar = GetNode<Bar_View>("Hp_Bar");
@@ -19,6 +21,14 @@ public partial class Entity_View : Base_View<IEntity_Model>
         movment_label = GetNode<Label>("Movment_Label");
         neg_effects = GetNode<Effects_View>("Neg_Effects");
         pos_effects = GetNode<Effects_View>("Pos_Effects");
+        animation = GetNode<AnimationPlayer>("Animation");
+        Mediator.Add_Listener<Move_Event>(this);
+    }
+
+    public void Handle(Move_Event evnt)
+    {
+        if (evnt.Model == Model)
+            animation.Play("Move");
     }
 
     protected override void On_Model_Changed()

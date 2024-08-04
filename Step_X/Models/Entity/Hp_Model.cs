@@ -2,12 +2,12 @@
 
 namespace Hex_Space_Rpg.Models;
 
-public class Hp_Model : Range_Model, IHandler<Damage_Command>, IHandler<Heal_Command>
+public class Hp_Model : Range_Model, IHandler<Damage_Command>, IHandler<Repair_Command>
 {
     public Hp_Model(int hp, IEntity_Model owner)
         : base(hp)
     {
-        Mediator.Add_Handler<Heal_Command>(this, owner);
+        Mediator.Add_Handler<Repair_Command>(this, owner);
         Mediator.Add_Handler<Damage_Command>(this, owner);
     }
 
@@ -16,7 +16,7 @@ public class Hp_Model : Range_Model, IHandler<Damage_Command>, IHandler<Heal_Com
         Amount -= cmd.Amount;
     }
 
-    public void Handle(Heal_Command cmd)
+    public void Handle(Repair_Command cmd)
     {
         Amount += cmd.Amount;
     }

@@ -21,7 +21,7 @@ Amount = 2
 
 [sub_resource type="Resource" id="Resource_x6xxo"]
 script = ExtResource("2_qtx21")
-Effect_Time = 0
+Effect_Time = 4
 
 [sub_resource type="Resource" id="Resource_nrcjj"]
 script = ExtResource("3_bo3r2")
