@@ -8,7 +8,10 @@ public partial class Entity_View : Base_View<IEntity_Model>
     private Bar shield_bar;
     private Label name_label;
     private Label movment_label;
-    private VBoxContainer effects_vbox;
+    private VBoxContainer pos_effects_vbox;
+    private VBoxContainer neg_effects_vbox;
+    private Label[] pos_effects_labels;
+    private Label[] neg_effects_labels;
 
     public override void _Ready()
     {
@@ -16,7 +19,15 @@ public partial class Entity_View : Base_View<IEntity_Model>
         shield_bar = GetNode<Bar>("Shield_Bar");
         name_label = GetNode<Label>("Name_Label");
         movment_label = GetNode<Label>("Movment_Label");
-        effects_vbox = GetNode<VBoxContainer>("Effects");
+        pos_effects_vbox = GetNode<VBoxContainer>("Pos_Effects");
+        neg_effects_vbox = GetNode<VBoxContainer>("Neg_Effects");
+        pos_effects_labels = new Label[4];
+        neg_effects_labels = new Label[4];
+        for (int i = 0; i < 4; i++)
+        {
+            pos_effects_labels[i] = GetNode<Label>("%Pos_Label_" + (i + 1));
+            neg_effects_labels[i] = GetNode<Label>("%Neg_Label_" + (i + 1));
+        }
     }
 
     protected override void On_Model_Changed()
@@ -53,15 +64,24 @@ public partial class Entity_View : Base_View<IEntity_Model>
 
     private void Update_Effects()
     {
-        effects_vbox.Visible = Model.Is_Alive & Model.Is_Hovering;
-        if (effects_vbox.Visible)
-            Add_Effects();
-    }
+        pos_effects_vbox.Visible = Model.Is_Alive & Model.Is_Hovering;
+        neg_effects_vbox.Visible = Model.Is_Alive & Model.Is_Hovering;
 
-    private void Add_Effects()
-    {
-        Remove_Children(effects_vbox);
+        var pos = 3;
+        var neg = 3;
         foreach (var effect in Model.Effects)
-            effects_vbox.AddChild(Get_Label(effect.Name, null));
+        {
+            if (effect.Is_Friendly)
+                pos_effects_labels[pos--].Text = effect.Name;
+            else
+                neg_effects_labels[neg--].Text = effect.Name;
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (i <= pos)
+                pos_effects_labels[i].Text = string.Empty;
+            if (i <= neg)
+                neg_effects_labels[i].Text = string.Empty;
+        }
     }
 }

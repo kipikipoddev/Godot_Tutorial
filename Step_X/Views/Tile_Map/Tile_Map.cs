@@ -14,7 +14,6 @@ public partial class Tile_Map : Node2D, IListener<Highlight_Event>
     private Vector2I highlighted;
     private Vector2I[] highlighted_positions;
 
-
     public override void _Ready()
     {
         tile_map = GetNode<TileMap>("Tile_Map");

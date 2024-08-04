@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("2_2rg1f")
-Color = Color(1, 1, 1, 1)
+Color = Color(0.313726, 0.313726, 0.313726, 1)
+Name = ""

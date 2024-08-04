@@ -44,8 +44,8 @@ public class Grid_Model : IGrid_Model, IListener<Highlight_Event>
 
         if (origin_model != null && target_model == null)
         {
-            Hover(target);
             new Move_Command(origin_model.Position, target).Send();
+            Hover(target);
         }
         else
             Clear_Hover();
