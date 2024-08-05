@@ -29,19 +29,13 @@ public class Ability_Model : IAbility_Model, IHandler<Fire_Ability_Command>
 
     public bool Posible(IEntity_Model target)
     {
-        if (!Owner.Is_Alive | Cooldown.Running | Owner.Is_Stun())
+        if (!Owner.Is_Alive | Owner.Movment.Is_Moving | Owner.Is_Stun())
             return false;
 
-        if (target == null || !target.Is_Alive)
+        if (!target.Is_Alive | target.Is_Stasis() | target.Movment.Is_Moving)
             return false;
 
-        if (target.Is_Stasis() | target.Movment.Is_Moving)
-            return false;
-
-        if (!Action.Posible(target))
-            return false;
-
-        if (Owner.Movment.Is_Moving)
+        if (!Action.Posible(target) | Cooldown.Running)
             return false;
 
         var distance = Owner.Position.Get_Distance(target.Position.Value);

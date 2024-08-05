@@ -8,7 +8,7 @@ public partial class Tile_Map : Node2D
     private TileMap tile_map;
     private IGrid_Model grid;
 
-    private Vector2I selected_cord = new Vector2I(2, 0);
+    private Vector2I selected_cord = new Vector2I(3, 0);
     private Vector2I? origin;
     private Vector2I highlighted;
 

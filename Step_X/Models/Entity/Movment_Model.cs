@@ -5,56 +5,49 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Models;
 
-public class Movment_Model : IMovment_Model, IHandler<Move_Command>
+public class Movment_Model :
+    State_Machine<Moving_States>,
+    IMovment_Model,
+    IHandler<Move_Command>
 {
     private readonly IEntity_Model owner;
     private readonly ITimer_Model recharge_timer;
-    private readonly ITimer_Model movment_timer;
     private Vector2I new_position;
     public IRange_Model Movment_Charges { get; }
-    public bool Is_Moving { get; private set; }
 
     public Movment_Model(IEntity_Model owner, Movment_Data data)
     {
         this.owner = owner;
         Movment_Charges = new Range_Model(data.Max_Tiles, 0);
-        movment_timer = new Timer_Model(1, Move_Done, false);
         recharge_timer = new Timer_Model(data.Recharge_Time, Recharge_Done);
+
+        On_Enter_Deleyed(Moving_States.Moving_From, 1, () => State = Moving_States.Moving_To);
+        On_Enter_Deleyed(Moving_States.Moving_To, 1, () => State = Moving_States.Can_Move);
+        On_Enter(Moving_States.Moving_To, () => new Set_Position_Command(owner, new_position));
+
+        Add_Transition(Moving_States.Can_Move, Moving_States.Cant_Move, () => !Can_Move);
+        Add_Transition(Moving_States.Cant_Move, Moving_States.Can_Move, () => Can_Move);
+
         Mediator.Add_Handler(this, owner);
     }
 
     public void Handle(Move_Command cmd)
     {
         var distance = owner.Position.Get_Distance(cmd.Position);
-        if (Can_Move(distance))
-        {
-            new_position = cmd.Position;
-            Is_Moving = true;
-            new Add_Amount_Command(Movment_Charges, -distance);
-            new Timer_Command(movment_timer);
-            new Timer_Command(recharge_timer);
-            new Move_Event(owner);
-        }
+        if (State == Moving_States.Can_Move & distance <= Movment_Charges.Amount)
+            Move(cmd.Position, distance);
     }
 
-    private void Move_Done()
+    private void Move(Vector2I position, int distance)
     {
-        if (owner.Position.Value != new_position)
-        {
-            new Set_Position_Command(owner, new_position);
-            new Timer_Command(movment_timer);
-        }
-        else
-            Is_Moving = false;
+        new_position = position;
+        State = Moving_States.Moving_From;
+        new Add_Amount_Command(Movment_Charges, -distance);
+        new Timer_Command(recharge_timer);
+        new Move_Event(owner);
     }
 
-
-    private bool Can_Move(int distance)
-    {
-        if (!owner.Is_Alive | owner.Is_Root())
-            return false;
-        return distance <= Movment_Charges.Amount;
-    }
+    private bool Can_Move => owner.Is_Alive & !owner.Is_Root();
 
     private void Recharge_Done()
     {
