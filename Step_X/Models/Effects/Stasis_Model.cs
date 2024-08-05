@@ -14,10 +14,10 @@ public class Stasis_Model : Stun_Model
     {
         base.Done();
         foreach (var effect in Target.Effects)
-            new Timer_Command(effect.Timer, Timer_Action.Resume).Send();
+            new Timer_Command(effect.Timer, Timer_Action.Resume);
         if (Target is ISpaceship_Model ship)
             foreach (var ability in ship.Abilities)
-                new Timer_Command(ability.Cooldown, Timer_Action.Resume).Send();
+                new Timer_Command(ability.Cooldown, Timer_Action.Resume);
     }
 }
 

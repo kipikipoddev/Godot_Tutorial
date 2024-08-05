@@ -24,7 +24,7 @@ public class Over_Time_Effect_Model : Effect_Model
         if (--left == 0)
             Remove();
         else
-            new Timer_Command(Timer).Send();
+            new Timer_Command(Timer);
         new Update_Event();
     }
 }

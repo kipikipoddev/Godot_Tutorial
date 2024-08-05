@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_padpg")
-Color = Color(0.886275, 0, 0, 1)
+Color = Color(0.886275, 0, 0, 0.392157)
+Name = ""

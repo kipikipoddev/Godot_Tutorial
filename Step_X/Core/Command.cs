@@ -6,9 +6,11 @@ public record Command : Base
 {
     public object Model_Object { get; }
 
-    public Command(object model_object)
+    public Command(object model_object, bool is_send = true)
     {
         Model_Object = model_object;
+        if (is_send)
+            Send();
     }
 
     public virtual void Send()

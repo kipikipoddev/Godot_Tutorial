@@ -20,7 +20,7 @@ public class Ability_Fire_Model : IListener<Update_Event>
 
         var target = Get_Target();
         if (target != null)
-            new Fire_Ability_Command(ability, target).Send();
+            new Fire_Ability_Command(ability, target);
     }
 
     private ISpaceship_Model Get_Target()

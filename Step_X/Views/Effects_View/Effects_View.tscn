@@ -9,26 +9,26 @@ script = ExtResource("1_6fgt3")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label_1" type="Label" parent="VBoxContainer"]
+[node name="Label_4" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "XXXXX"
-horizontal_alignment = 1
-
-[node name="Label_2" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "XXXXX"
+text = "Effect 4"
 horizontal_alignment = 1
 
 [node name="Label_3" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "XXXXX"
+text = "Effect 3"
 horizontal_alignment = 1
 
-[node name="Label_4" type="Label" parent="VBoxContainer"]
+[node name="Label_2" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "XXXXX"
+text = "Effect 2"
+horizontal_alignment = 1
+
+[node name="Label_1" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Effect 1"
 horizontal_alignment = 1

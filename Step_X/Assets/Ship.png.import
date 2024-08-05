@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj8kq1o4eeqcx"
-path="res://.godot/imported/Ship.png-be833d8567e28dec23a266ce5e1adce5.ctex"
+uid="uid://n2r3l3bf2cjh"
+path="res://.godot/imported/Ship.png-822e95a0f04d80a887d195895bfbe6bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/colorful-spaceship-collection-with-flat-design/Ship.png"
-dest_files=["res://.godot/imported/Ship.png-be833d8567e28dec23a266ce5e1adce5.ctex"]
+source_file="res://Assets/Ship.png"
+dest_files=["res://.godot/imported/Ship.png-822e95a0f04d80a887d195895bfbe6bc.ctex"]
 
 [params]
 

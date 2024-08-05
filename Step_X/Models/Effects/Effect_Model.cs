@@ -40,7 +40,7 @@ public abstract class Effect_Model : IEffect_Model, IHandler<Remove_Effect_Comma
     {
         var existing = Target.Effects.FirstOrDefault(e => e.Name == Name);
         if (existing != null)
-            new Remove_Effect_Command(existing).Send();
+            new Remove_Effect_Command(existing);
         Target.Effects.Add(this);
     }
 }

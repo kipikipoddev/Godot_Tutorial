@@ -11,8 +11,10 @@ public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Even
     private Label movment_label;
     private Effects_View neg_effects;
     private Effects_View pos_effects;
+    private Sprite2D entity_modulate_sprite;
+
     private AnimationPlayer animation;
-    
+
     public override void _Ready()
     {
         hp_Bar = GetNode<Bar_View>("Hp_Bar");
@@ -21,6 +23,7 @@ public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Even
         movment_label = GetNode<Label>("Movment_Label");
         neg_effects = GetNode<Effects_View>("Neg_Effects");
         pos_effects = GetNode<Effects_View>("Pos_Effects");
+        entity_modulate_sprite = GetNode<Sprite2D>("Entity_Modulate_Sprite");
         animation = GetNode<AnimationPlayer>("Animation");
         Mediator.Add_Listener<Move_Event>(this);
     }
@@ -36,7 +39,7 @@ public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Even
         hp_Bar.Model = Model.Hp;
         shield_bar.Model = Model.Shield;
         name_label.Text = Model.Name;
-        name_label.Modulate = Model.Team.Color;
+        entity_modulate_sprite.Modulate = Model.Team.Color;
         hp_Bar.Show_Details = () => Model.Is_Hovering;
         shield_bar.Show_Details = () => Model.Is_Hovering;
         neg_effects.Model = Model;
@@ -51,7 +54,7 @@ public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Even
 
     private void Update_Movment()
     {
-        var movment_Charges = Model.Position.Movment_Charges;
+        var movment_Charges = Model.Movment.Movment_Charges;
         movment_label.Text = $"{movment_Charges.Amount}/{movment_Charges.Max}";
         movment_label.Visible = Model.Is_Alive;
     }

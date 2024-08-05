@@ -14,16 +14,16 @@ public class Grid_Model : IGrid_Model
     public void Clear_Hover()
     {
         if (hovering != null)
-            new Set_Hover_Command(hovering, false).Send();
+            new Set_Hover_Command(hovering, false);
         new UI_Update_Event();
     }
 
     public void Hover(Vector2I pos)
     {
         if (hovering != null)
-            new Set_Hover_Command(hovering, false).Send();
+            new Set_Hover_Command(hovering, false);
         hovering = Get_Model(pos);
-        new Set_Hover_Command(hovering, true).Send();
+        new Set_Hover_Command(hovering, true);
         new UI_Update_Event();
     }
 
@@ -34,7 +34,7 @@ public class Grid_Model : IGrid_Model
 
         if (origin_model != null && target_model == null)
         {
-            new Move_Command(origin_model.Position, target).Send();
+            new Move_Command(origin_model, target);
             Hover(target);
         }
         else

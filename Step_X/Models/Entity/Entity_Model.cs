@@ -12,6 +12,7 @@ public class Entity_Model : IEntity_Model, IHandler<Set_Hover_Command>
     public List<IEffect_Model> Effects { get; }
     public ITeam_Model Team { get; }
     public IPosition_Model Position { get; }
+    public IMovment_Model Movment { get; }
     public bool Is_Hovering { get; private set; }
 
     public Entity_Model(Entity_Data data, Team_Data team, Vector2I start_position)
@@ -21,8 +22,8 @@ public class Entity_Model : IEntity_Model, IHandler<Set_Hover_Command>
         Shield = new Shield_Model(this, data.Shield);
         Effects = new();
         Team = new Team_Model(team);
-        Position = new Position_Model(this, data.Movment, start_position);
-
+        Position = new Position_Model(this, start_position);
+        Movment = new Movment_Model(this, data.Movment);
         Mediator.Add_Handler(this);
     }
 

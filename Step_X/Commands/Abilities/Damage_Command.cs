@@ -8,11 +8,12 @@ public record Damage_Command : Command, IAmount_Model
     public IType_Model Type { get; }
 
     public Damage_Command(IEntity_Model entity, int amount, IType_Model type)
-        : base(entity)
+        : base(entity, false)
     {
         original_value = amount;
         Amount = amount;
         Type = type;
+        Send();
     }
 
     public override void Send()

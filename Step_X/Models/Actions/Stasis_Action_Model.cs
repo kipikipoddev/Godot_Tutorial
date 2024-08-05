@@ -17,10 +17,10 @@ public class Stasis_Action_Model : Action_Model
     public override void Perform(IEntity_Model target)
     {
         foreach (var effect in target.Effects)
-            new Timer_Command(effect.Timer, Timer_Action.Pause).Send();
+            new Timer_Command(effect.Timer, Timer_Action.Pause);
         new Stasis_Model(time, target);
         if (target is ISpaceship_Model ship)
             foreach (var ability in ship.Abilities)
-                new Timer_Command(ability.Cooldown, Timer_Action.Pause).Send();
+                new Timer_Command(ability.Cooldown, Timer_Action.Pause);
     }
 }
