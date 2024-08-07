@@ -14,6 +14,7 @@ public class Movment_Model :
     private readonly ITimer_Model recharge_timer;
     private Vector2I new_position;
     public IRange_Model Movment_Charges { get; }
+    public bool Can_Move => owner.Is_Alive & !owner.Is_Root();
 
     public Movment_Model(IEntity_Model owner, Movment_Data data)
     {
@@ -46,8 +47,6 @@ public class Movment_Model :
         new Timer_Command(recharge_timer);
         new Move_Event(owner);
     }
-
-    private bool Can_Move => owner.Is_Alive & !owner.Is_Root();
 
     private void Recharge_Done()
     {

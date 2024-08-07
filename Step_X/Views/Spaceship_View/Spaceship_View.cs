@@ -47,7 +47,7 @@ public partial class Spaceship_View : Base_View<ISpaceship_Model>
     private void Update_Visible()
     {
         weapons_view.Visible = Model.Is_Hovering & Model.Is_Alive;
-        armor_hb.Visible = Model.Armor.Length > 0 & Model.Is_Hovering;
+        armor_hb.Visible = Model.Armor.Length > 0 & Model.Is_Hovering & Model.Is_Alive;
         dead_label.Visible = !Model.Is_Alive;
     }
 

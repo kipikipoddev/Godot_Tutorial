@@ -15,7 +15,6 @@ public class Grid_Model : IGrid_Model
     {
         if (hovering != null)
             new Set_Hover_Command(hovering, false);
-        new UI_Update_Event();
     }
 
     public void Hover(Vector2I pos)
@@ -23,8 +22,17 @@ public class Grid_Model : IGrid_Model
         if (hovering != null)
             new Set_Hover_Command(hovering, false);
         hovering = Get_Model(pos);
-        new Set_Hover_Command(hovering, true);
-        new UI_Update_Event();
+        if (hovering != null && !hovering.Movment.Is_Moving)
+            new Set_Hover_Command(hovering, true);
+    }
+
+    public Tile_Type Get_Type(Vector2I pos)
+    {
+        var entity = Get_Model(pos);
+        if (entity == null)
+            return Tile_Type.Empty;
+        else
+            return entity.Movment.Can_Move ? Tile_Type.Entity : Tile_Type.Immobilized_Entity;
     }
 
     public void Select(Vector2I origin, Vector2I target)

@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Hex_Space_Rpg.Events;
 using Hex_Space_Rpg.Models;
 
@@ -18,7 +17,6 @@ public class State_Machine<TStats> : IState_Machine<TStats>, IListener<Update_Ev
         {
             if (value.Equals(current))
                 return;
-            System.Console.WriteLine($"{current} => {value}");
             current = value;
             if (on_transition.ContainsKey(value))
                 foreach (var action in on_transition[value])

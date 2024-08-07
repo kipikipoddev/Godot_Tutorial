@@ -15,7 +15,7 @@ position = Vector2(-160, 0)
 scale = Vector2(0.65, 0.65)
 
 [node name="Ability_3" parent="." instance=ExtResource("3_sfn3c")]
-position = Vector2(77, 113)
+position = Vector2(76, 108)
 scale = Vector2(0.65, 0.65)
 
 [node name="Ability_4" parent="." instance=ExtResource("3_sfn3c")]
