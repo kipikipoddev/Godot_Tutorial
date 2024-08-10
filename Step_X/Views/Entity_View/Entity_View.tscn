@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccrkqp0do1icp"]
+[gd_scene load_steps=17 format=3 uid="uid://ccrkqp0do1icp"]
 
 [ext_resource type="Script" path="res://Views/Entity_View/Entity_View.cs" id="1_bf7wx"]
 [ext_resource type="PackedScene" uid="uid://b3jqt5ar05rk1" path="res://Views/Bar_View/Bar_View.tscn" id="2_bsli7"]
@@ -32,6 +32,34 @@ script = ExtResource("3_fae3h")
 Color = Color(0.215686, 0.443137, 1, 1)
 Ratio = 1.0
 
+[sub_resource type="Animation" id="Animation_qrcdq"]
+resource_name = "Damage"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damage_Label:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -18), Vector2(30, -50), Vector2(94, -25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Damage_Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.494118), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_jlosj"]
 resource_name = "Move"
 length = 2.0
@@ -48,9 +76,14 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0, 0), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ohi1e"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_henx0"]
 _data = {
-"Move": SubResource("Animation_jlosj")
+"Damage": SubResource("Animation_qrcdq"),
+"Move": SubResource("Animation_jlosj"),
+"RESET": SubResource("Animation_ohi1e")
 }
 
 [node name="Entity_View" type="Node2D"]
@@ -94,11 +127,12 @@ text = "XX"
 horizontal_alignment = 1
 
 [node name="Neg_Effects" parent="." instance=ExtResource("5_plroq")]
+visible = false
 position = Vector2(-64, -39)
 LabelSettings = ExtResource("5_s05j6")
-Is_Friendly = null
 
 [node name="Pos_Effects" parent="." instance=ExtResource("5_plroq")]
+visible = false
 position = Vector2(16, -36)
 LabelSettings = ExtResource("7_aky3c")
 Is_Friendly = true

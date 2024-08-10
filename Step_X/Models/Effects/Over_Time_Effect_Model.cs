@@ -19,6 +19,12 @@ public class Over_Time_Effect_Model : Effect_Model
 
     protected override void Done()
     {
+        if (!Target.Is_Alive)
+        {
+            Remove();
+            return;
+        }
+
         action.Perform(Target);
 
         if (--left == 0)

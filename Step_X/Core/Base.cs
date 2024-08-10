@@ -25,6 +25,6 @@ public record Base
         sb.Append(DateTime.Now.ToString("HH:mm:ss:ff"));
         for (int i = 0; i < Indentation; i++)
             sb.Append('\t');
-        //Console.WriteLine($"{sb} {GetType().Name} {message}");
+        Console.WriteLine($"{sb} {GetType().Name} {message}");
     }
 }

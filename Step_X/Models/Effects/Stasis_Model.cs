@@ -13,8 +13,8 @@ public class Stasis_Model : Stun_Model
     protected override void Done()
     {
         base.Done();
-        foreach (var effect in Target.Effects)
-            new Timer_Command(effect.Timer, Timer_Action.Resume);
+        for (int i = 0; i < Target.Effects.Count; i++)
+            new Timer_Command(Target.Effects[i].Timer, Timer_Action.Resume);
         if (Target is ISpaceship_Model ship)
             foreach (var ability in ship.Abilities)
                 new Timer_Command(ability.Cooldown, Timer_Action.Resume);

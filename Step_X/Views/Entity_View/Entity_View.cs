@@ -3,8 +3,9 @@ using Hex_Space_Rpg.Events;
 
 namespace Hex_Space_Rpg.Views;
 
-public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Event>
+public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Event>, IListener<Damage_Event>
 {
+    private PackedScene damage_scene = (PackedScene)ResourceLoader.Load("res://Views/Damage_View/Damage_View.tscn");
     private Bar_View hp_Bar;
     private Bar_View shield_bar;
     private Label name_label;
@@ -26,12 +27,22 @@ public partial class Entity_View : Base_View<IEntity_Model>, IListener<Move_Even
         entity_modulate_sprite = GetNode<Sprite2D>("Entity_Modulate_Sprite");
         animation = GetNode<AnimationPlayer>("Animation");
         Mediator.Add_Listener<Move_Event>(this);
+        Mediator.Add_Listener<Damage_Event>(this);
     }
 
     public void Handle(Move_Event evnt)
     {
         if (evnt.Model == Model)
             animation.Play("Move");
+    }
+
+    public void Handle(Damage_Event evnt)
+    {
+        if (evnt.Model != Model)
+            return;
+        var damage_View = damage_scene.Instantiate() as Damage_View;
+        damage_View.Event = evnt;
+        AddChild(damage_View);
     }
 
     protected override void On_Model_Changed()
