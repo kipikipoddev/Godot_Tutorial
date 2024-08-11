@@ -32,7 +32,7 @@ public class Ability_Model : IAbility_Model, IHandler<Fire_Ability_Command>
         if (!Owner.Is_Alive | Owner.Movment.Is_Moving | Owner.Is_Stun())
             return false;
 
-        if (!target.Is_Alive | target.Is_Stasis() | target.Movment.Is_Moving)
+        if (!target.Is_Alive | target.Movment.Is_Moving)
             return false;
 
         if (!Action.Posible(target) | Cooldown.Running)
